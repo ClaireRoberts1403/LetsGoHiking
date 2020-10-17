@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div id="crossfade">
+  <img class="bottom" src="./media/hero_image.jpg" style= "width: 100%">
+  <img class="top" src="./media/hero-image3.jpg" style= "width: 100%">
+</div>
+<div class="container-fluid">
+    <div class="hero-title">
+        <h1 class="hero-font">Let's Go Hiking!</h1>
+    </div>
+    <div>
+        <h2 class="hero-subtitle">Find your next challenge</h2>
+        <button class="button find-out-more-btn">Find out more</button>
+    </div>
+</div>
+{% endblock %}

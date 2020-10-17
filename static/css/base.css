@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Caveat:wght@700&family=Raleway&display=swap');
+
+/* colour scheme (#007878 teal) (#03A696 lighter teal) (#E6E7E8 light grey) (#FF9600 mustard) (#284664 navy) */
+body {
+    font-family: 'Raleway', sans-serif;
+    width:100%;
+}
+
+.header-title {
+    font-family: 'Alfa Slab One', cursive;
+}
+
+/* CSS code for crossfading hero-images taken from https://cssreset.com/how-to-create-the-perfect-image-crossfade-with-css3-transitions/ */
+
+#crossfade {
+    position: relative;
+    width:100%;
+}
+#crossfade img {
+    position:absolute;
+    left:0;
+    opacity: 1;
+    -webkit-transition: opacity 2s ease-in-out;
+    -moz-transition: opacity 2s ease-in-out;
+    -o-transition: opacity 2s ease-in-out;
+    -ms-transition: opacity 2s ease-in-out;    
+    transition: opacity 2s ease-in-out;
+}
+ 
+#crossfade img.top:hover {
+    opacity:0;
+}
+
+.hero-font {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 4em;
+    z-index: 999;
+    position: absolute;
+    padding-top: 10%;
+    color: black;
+}
+
+.hero-subtitle {
+    z-index: 999;
+    padding: 18% 22%;
+    position: absolute;
+    color: black;
+    
+}
+
+.find-out-more-btn {
+    background-color: #FF9600;
+    margin-left: 10%; 
+    margin-top: 20%;
+    font-weight: bolder;
+    font-family: 'Raleway', sans-serif;
+}

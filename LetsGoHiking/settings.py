@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 #    'allauth.socialaccount.providers.facebook',
 #    'allauth.socialaccount.providers.apple',
     'storages',
+    'home',
 
 ]
 
@@ -68,7 +69,10 @@ ROOT_URLCONF = 'LetsGoHiking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates/allauth')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,7 +106,7 @@ LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'LetsGoHiking.wsgi.application'
 
-# Provider specific settings add in for using google, apple, and facebook login
+# Provider specific settings add in for using google, apple, and facebook login if using
 
 
 # Database
@@ -143,9 +147,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-uk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'GMT'
 
 USE_I18N = True
 
