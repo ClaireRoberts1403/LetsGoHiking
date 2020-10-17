@@ -42,7 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages'
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+#    'allauth.socialaccount.providers.google',
+#    'allauth.socialaccount.providers.facebook',
+#    'allauth.socialaccount.providers.apple',
+    'storages',
 
 ]
 
@@ -73,8 +80,29 @@ TEMPLATES = [
         },
     },
 ]
+# Needed to login by username in Django admin, regardless of `allauth`
+# `allauth` specific authentication methods, such as login by e-mail
+AUTHENTICATION_BACKENDS = [
+
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'LetsGoHiking.wsgi.application'
+
+# Provider specific settings add in for using google, apple, and facebook login
 
 
 # Database
