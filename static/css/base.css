@@ -64,3 +64,13 @@ body {
     font-weight: bolder;
     font-family: 'Raleway', sans-serif;
 }
+
+.challenge-card {
+    padding-top: 50px;
+}
+
+.heading-font {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 4em;
+    color: black
+}

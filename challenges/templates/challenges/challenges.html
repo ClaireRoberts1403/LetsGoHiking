@@ -1,21 +1,57 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}    
-<div class="container-fluid">
-    <div class="container">
-      <h1 class="hero-font">
-        Challenges
-      </h1>
-      <h2 class="hero-subtitle">
-        "It's not the mountain we conquer, but ourselves." - Sir Edmund Hillary
-      </h2>
-      {% for challenge in challenges %}
-      <h3>
-      {{ challenge.name }}
-      {% endfor %}
-    </div>
-  </div>
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-4 heading-font">
+			Challenges
+		</h1>
+		<h2 class="lead">
+			"It's not the mountain we conquer, but ourselves." - Sir Edmund Hillary
+		</h2>
+	</div>
+</div>
+{% for challenge in challenges %}
+<div class="container-fluid challenge-card">
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="row no-gutters">
+					<div class="col-md-4">
+						{% if challenge.challenge_image %}
+						<img class="card-img" src="{{ challenge.challenge_image.url }}" alt="{{ challenge.name }}">
+                                {% else %}
+						<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
+                                </a>
+						{% endif %}
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h3 class="card-title"><strong>{{ challenge.name }}</strong></h3>
+							<p class="card-text">{{ challenge.challenge_description }}</p>
+							<ul class="list-group list-group-horizontal">
+								<li class="list-group-item">Distance:  {{ challenge.challenge_distance }} KM</li>
+								<li class="list-group-item">Ascent:  {{ challenge.challenge_ascent }} M</li>
+								<li class="list-group-item">Estimated time:  {{ challenge.challenge_estimate_time }} Hours</li>
+								<li class="list-group-item">Difficulty:  {{ challenge.challenge_difficulty_rating }}</li>
+							</ul>
+                            <ul class="list-group list-group-horizontal">
+                            <li class="list-group-item">Location  {{ challenge.challenge_location }}</li>
+                            <li class="list-group-item">{{ challenge.challenge_award_name }}</li>
+                            <li class="list-group-item">Price: £  {{ challenge.challenge_price }}</li>
+							<a href="#"
+								class="card-footer"><button type="button" class="btn find-out-more-btn">Find out more</button></a>
+                                </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
 
-    
+
+
 {% endblock %}
