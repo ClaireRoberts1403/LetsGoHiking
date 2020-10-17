@@ -8,6 +8,18 @@ body {
 
 .header-title {
     font-family: 'Alfa Slab One', cursive;
+    font-size: 2.5em;
+    color: black;
+    padding-top: 10px;
+}
+
+.navbar-brand, .navbar-tabs {
+    display: inline-block;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.3em;
+    padding-left: 50px!important;
 }
 
 .my-btn-dark {
@@ -59,8 +71,8 @@ body {
 
 .find-out-more-btn {
     background-color: #FF9600;
-    margin-left: 10%; 
-    margin-top: 20%;
+    margin-left: 40%; 
+    margin-top: 25%;
     font-weight: bolder;
     font-family: 'Raleway', sans-serif;
 }
