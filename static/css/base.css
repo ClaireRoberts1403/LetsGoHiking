@@ -10,6 +10,15 @@ body {
     font-family: 'Alfa Slab One', cursive;
 }
 
+.my-btn-dark {
+    background-color: #007878;
+    color: #E6E7E8!important;
+}
+
+.my-btn-light {
+    background-color: #03A696;
+}
+
 /* CSS code for crossfading hero-images taken from https://cssreset.com/how-to-create-the-perfect-image-crossfade-with-css3-transitions/ */
 
 #crossfade {

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 #    'allauth.socialaccount.providers.facebook',
 #    'allauth.socialaccount.providers.apple',
     'storages',
+    'crispy_forms',
     'home',
     'challenges',
 
@@ -67,6 +68,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'LetsGoHiking.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -82,6 +85,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
