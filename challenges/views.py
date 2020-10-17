@@ -4,8 +4,9 @@ from .forms import challengeForm
 
 
 def challenges(request):
+    challenges = challenge.objects.all()
 
-    return render(request, 'challenges/challenges.html')
+    return render(request, 'challenges/challenges.html', {'challenges': challenges})
 
 def add_challenge(request):
 
