@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .models import challenge
 from .forms import challengeForm
+from django.contrib import messages
 
 
 def challenges(request):
     challenges = challenge.objects.all()
 
     return render(request, 'challenges/challenges.html', {'challenges': challenges})
+
 
 def add_challenge(request):
 

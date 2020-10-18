@@ -4,6 +4,7 @@
 body {
     font-family: 'Raleway', sans-serif;
     width:100%;
+    background-color: #284664;
 }
 
 .header-title {
@@ -85,4 +86,19 @@ body {
     font-family: 'Alfa Slab One', cursive;
     font-size: 4em;
     color: black
+}
+
+.card-img.award_image {
+    width: 50px;
+}
+
+.card-img.award_image:hover {
+    position:relative;
+    top:-25px;
+    left:-35px;
+    width:300px;
+    height:auto;
+    display:block;
+    z-index:999;
+    transition: 0.3s;
 }

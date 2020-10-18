@@ -20,5 +20,5 @@ Guidence/Resourses from
 “Created my free logo at LogoMakr.com”
 "Additional guidence from Django Docs https://www.djangoproject.com/"
 "Fixes for small queries https://stackoverflow.com/"
-"for guidende on cripsy forms set up https://django-crispy-forms.readthedocs.io/en/latest/index.html"
+"for guidence on cripsy forms set up https://django-crispy-forms.readthedocs.io/en/latest/index.html"
 "Transitions of images on home page from https://cssreset.com/how-to-create-the-perfect-image-crossfade-with-css3-transitions/"

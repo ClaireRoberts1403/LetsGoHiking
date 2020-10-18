@@ -31,18 +31,28 @@
 							<h3 class="card-title"><strong>{{ challenge.name }}</strong></h3>
 							<p class="card-text">{{ challenge.challenge_description }}</p>
 							<ul class="list-group list-group-horizontal">
-								<li class="list-group-item">Distance:  {{ challenge.challenge_distance }} KM</li>
-								<li class="list-group-item">Ascent:  {{ challenge.challenge_ascent }} M</li>
-								<li class="list-group-item">Estimated time:  {{ challenge.challenge_estimate_time }} Hours</li>
-								<li class="list-group-item">Difficulty:  {{ challenge.challenge_difficulty_rating }}</li>
+								<li class="list-group-item">Distance: {{ challenge.challenge_distance }} KM</li>
+								<li class="list-group-item">Ascent: {{ challenge.challenge_ascent }} M</li>
+								<li class="list-group-item">Estimated time: {{ challenge.challenge_estimate_time }}
+									Hours</li>
+								<li class="list-group-item">Difficulty: {{ challenge.challenge_difficulty_rating }}</li>
 							</ul>
-                            <ul class="list-group list-group-horizontal">
-                            <li class="list-group-item">Location  {{ challenge.challenge_location }}</li>
-                            <li class="list-group-item">{{ challenge.challenge_award_name }}</li>
-                            <li class="list-group-item">Price: £  {{ challenge.challenge_price }}</li>
-							<a href="#"
-								class="card-footer"><button type="button" class="btn find-out-more-btn">Find out more</button></a>
-                                </ul>
+							<ul class="list-group list-group-horizontal">
+								<li class="list-group-item">Location {{ challenge.challenge_location }}</li>
+								<li class="list-group-item">Award: {{ challenge.challenge_award_name }}</li>
+								<li class="list-group-item">
+								{% if challenge.challenge_image %}
+									<img class="card-img award_image" src="{{ challenge.challenge_award_image.url }}" alt="{{ challenge.name }}">
+                                {% else %}
+									<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
+								{% endif %}
+								</li>
+								
+							</ul>
+							<ul class="list-group list-group-horizontal"><li class="list-group-item">Price: £ {{ challenge.challenge_price }}</li>
+								<li class="list-group-item"><a
+									href="#"><button type="button" class="btn btn-info my-btn-dark text-nowrap">Add to cart</button></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
