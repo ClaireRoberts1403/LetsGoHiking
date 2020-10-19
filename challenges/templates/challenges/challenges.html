@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<!-- Challenges Header and quote -->
 <div class="jumbotron jumbotron-fluid">
 	<div class="container">
 		<h1 class="display-4 heading-font">
@@ -12,6 +13,7 @@
 		</h2>
 	</div>
 </div>
+<!-- Challenge Card -->
 {% for challenge in challenges %}
 <div class="container-fluid challenge-card">
 	<div class="row">
@@ -47,6 +49,7 @@
 								{% endif %}
 								</li>
 							</ul>
+                            <!-- Add to cart functionality -->
 							<ul class="list-group list-group-horizontal"><li class="list-group-item">Price: £ {{ challenge.challenge_price }}</li>
 								<li class="list-group-item">
                                     <a href="#"><button type="button" class="btn btn-info my-btn-dark text-nowrap">
