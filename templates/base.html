@@ -63,7 +63,7 @@
         <a class="nav-link" href="{% url 'challenges' %}">Challenges</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="{% url 'shop' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Shop
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -72,7 +72,7 @@
           <a class="dropdown-item" href="#">Hats</a>
           <a class="dropdown-item" href="#">Water Bottles</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Shop Everything</a>
+          <a class="dropdown-item" href="{% url 'shop' %}">Shop Everything</a>
         </div>
       </li>
     </ul>
