@@ -67,10 +67,10 @@
           Shop
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Patches</a>
-          <a class="dropdown-item" href="#">Stickers</a>
-          <a class="dropdown-item" href="#">Hats</a>
-          <a class="dropdown-item" href="#">Water Bottles</a>
+          <a class="dropdown-item" href="{% url 'shop' %}?category=patches">Patches</a>
+          <a class="dropdown-item" href="{% url 'shop' %}?category=stickers">Stickers</a>
+          <a class="dropdown-item" href="{% url 'shop' %}?category=hats">Hats</a>
+          <a class="dropdown-item" href="{% url 'shop' %}?category=waterBottles">Water Bottles</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{% url 'shop' %}">Shop Everything</a>
         </div>
