@@ -75,7 +75,20 @@
           <a class="dropdown-item" href="{% url 'shop' %}">Shop Everything</a>
         </div>
       </li>
+      <!-- code for shopping cart with counter from solodev.com - see read me for full link -->
+      <li class="nav-item px-3 text-uppercase mb-0 position-relative d-lg-flex">
+        <div id="cart" class="d-none">
+
+        </div>
+        <a href="/store/cart.stml" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+          <i class="fas fa fa-shopping-cart fa-lg"></i>
+          <span class="cart-basket d-flex align-items-center justify-content-center">
+            0
+          </span>
+        </a>
+      </li>
     </ul>
+    
     <div class="buttons">
           <a class="button my-btn-light">
             <strong>Sign up</strong>
