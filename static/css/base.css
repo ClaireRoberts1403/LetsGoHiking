@@ -7,6 +7,17 @@ body {
     background-color: #284664;
 }
 
+.my_footer {
+    background-color: #284664;
+    border-top-color: #FF9600;
+    border-bottom-color:#284664;
+    border-right-color: #284664;
+    border-left-color: #284664;
+    border-style: solid;
+    color: #E6E7E8;
+    padding: 2rem 1.5rem 2rem;
+}
+
 .header-title {
     font-family: 'Alfa Slab One', cursive;
     font-size: 2.5em;
@@ -34,7 +45,7 @@ body {
 
 /* style for shopping cart with counter taken from https://www.solodev.com/ - see readme */
 
-ul li a {
+ul li a.cart {
   font-size: 2rem;
   color: black;
   margin-left: 20px;
@@ -127,4 +138,15 @@ ul li a.cart .cart-basket {
     display:block;
     z-index:999;
     transition: 0.3s;
+}
+
+.table {
+    margin-left: 15%;
+    width: 70%;
+    padding: 20%;
+
+}
+
+.col {
+    margin-bottom: 30px;
 }

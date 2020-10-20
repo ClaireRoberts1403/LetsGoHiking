@@ -2,20 +2,25 @@
 {% load static %}
 
 {% block content %}
+<div>
 <div id="crossfade">
 	<img class="bottom" src="{{ '../media/hero-image3.jpg' }}" style= "width: 100%">
 	<img class="top" src="{{ '../media/hero-image2.jpg' }}" style= "width: 100%">
 </div>
-	<div class="container-fluid">
-		<div class="container">
+</div>
+	<div class="row">
+		<div class="col">
 			<h1 class="hero-font">
 				Let's Go Hiking
 			</h1>
+            <h2 class="hero-subtitle">Find your next challenge</h2>
 		</div>
-		<div class="container">
-			<h2 class="hero-subtitle">Find your next challenge</h2>
+		<div class="row">
+        <siv class="col">
+			
 		</div>
-		<div class="container">
+        </div>
+		<div class="col">
 			<button type="button" data-toggle="modal" data-target="FindOutMoreModal" class="btn find-out-more-btn">Find out more</button>
 		</div>
 

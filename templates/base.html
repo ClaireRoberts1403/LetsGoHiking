@@ -57,7 +57,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'challenges' %}">Challenges</a>
@@ -75,15 +75,14 @@
           <a class="dropdown-item" href="{% url 'shop' %}">Shop Everything</a>
         </div>
       </li>
-      <!-- code for shopping cart with counter from solodev.com - see read me for full link -->
+      <!-- code for shopping cart icon with counter from solodev.com - see read me for full link -->
       <li class="nav-item px-3 text-uppercase mb-0 position-relative d-lg-flex">
         <div id="cart" class="d-none">
-
         </div>
-        <a href="/store/cart.stml" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+        <a href="{% url 'bag' %}" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
           <i class="fas fa fa-shopping-cart fa-lg"></i>
           <span class="cart-basket d-flex align-items-center justify-content-center">
-            0
+            0<!-- change this to show items in cart functionality-->
           </span>
         </a>
       </li>
@@ -99,7 +98,7 @@
         </div>
   </div>
 </nav>
-	
+
 
 	{% if messages %}
 	<div class="message-container"></div>
@@ -113,7 +112,11 @@
 
 	{% block page_footer %}
 	{% endblock %}
-
+<footer class="my_footer navbar fixed-bottom">
+<div class="container">
+<span>About</span>
+</div>
+</footer>
 	{% block postloadjs %}
 	{% endblock %}
 
