@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<!-- Profile Header -->
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-4 heading-font">
+			{{ profile.username }} profile
+		</h1>
+	</div>
+</div>
+        <div class="row">
+            <div class="col">
+            <!-- Profile form - crispy -->
+                <h3>Your account information</h3>
+                <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="my-btn-light">Update Information</button>
+                </form>
+            </div>
+            
+                          
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+{% endblock %}

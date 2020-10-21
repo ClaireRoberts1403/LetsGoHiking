@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'challenges',
     'shop',
     'bag',
+    'profiles',
 
 ]
 

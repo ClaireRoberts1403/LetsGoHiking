@@ -11,6 +11,7 @@
 </div>
 <div class="col">
     {% if bag_items %}
+    <!-- Table to display items in cart -->
         <table class="table table-striped">
         <thead>
             <tr>
@@ -32,7 +33,7 @@
 				{% endif %}</td>
 
             <td>£{{ item.product.product_price }}</td>
-
+<!-- Need to add in messages funcationality -->
             <td><form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                 {% csrf_token %}
                 <div class="form-group">
@@ -74,6 +75,7 @@
         </tr>
         <tr>
         <td>
+        <!-- Needs Checkout functionality -->
             <a href="{% url 'shop' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Keep Shopping</a>
             <a href="{% url 'challenges' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Back to Challenges</a>
             <a href="{% url 'checkout' %}" class="btn btn-lrg my-btn-light">
@@ -87,6 +89,7 @@
         </tbody>
         </table>
     {% else %}
+    <!-- Empty cart user-view -->
     <div class="container-fluid">
         <h2 class="cart_empty">Your cart is empty</h2>
                 <a href="{% url 'shop' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Keep Shopping</a>
