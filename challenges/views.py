@@ -1,13 +1,21 @@
 from django.shortcuts import render, redirect, reverse
 from .models import challenge
 from .forms import challengeForm
-from django.contrib import messages
 
 
 def challenges(request):
     challenges = challenge.objects.all()
 
     return render(request, 'challenges/challenges.html', {'challenges': challenges})
+
+
+# Login in required needs adding/confirmation of payment
+
+
+def full_challenge(request):
+    challenges = challenge.objects.all()
+
+    return render(request, 'challenges/full_challenge.html', {'challenges': challenges})
 
 
 def add_challenge(request):

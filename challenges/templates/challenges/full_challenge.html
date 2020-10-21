@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% for challenge in challenges %}
+<!-- Challenges Header and quote -->
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-4 heading-font">
+			 {{ challenge.name }} Challenge
+		</h1>
+		<h2 class="lead">
+			"The mountains are calling and I must go." - John Muir
+		</h2>
+	</div>
+</div>
+<!-- Challenge Card -->
+
+<div class="container-fluid challenge-card">
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="row no-gutters">
+					<div class="col-md-4">
+						{% if challenge.challenge_image %}
+						<img class="card-img" src="{{ challenge.challenge_image.url }}" alt="{{ challenge.name }}">
+                            {% else %}
+						<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
+						{% endif %}
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h3 class="card-title header-title"><strong>{{ challenge.name }}</strong></h3>
+							<p class="card-text">{{ challenge.challenge_description }}</p>
+							<ul class="list-group list-group-horizontal">
+								<li class="list-group-item">Distance: {{ challenge.challenge_distance }} KM</li>
+								<li class="list-group-item">Ascent: {{ challenge.challenge_ascent }} M</li>
+								<li class="list-group-item">Estimated time: {{ challenge.challenge_estimate_time }}
+									Hours</li>
+								<li class="list-group-item">Difficulty: {{ challenge.challenge_difficulty_rating }}</li>
+							</ul>
+							<ul class="list-group list-group-horizontal">
+								<li class="list-group-item">Location {{ challenge.challenge_location }}</li>
+								<li class="list-group-item">Award: {{ challenge.challenge_award_name }}</li>
+								<li class="list-group-item">
+								{% if challenge.challenge_image %}
+									<img class="card-img award_image" src="{{ challenge.challenge_award_image.url }}" alt="{{ challenge.name }}">
+                                {% else %}
+									<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
+								{% endif %}
+								</li>
+							</ul>
+                            <ul class="list-group list-group-horizontal">
+								<li class="list-group-item">Startpoint {{ challenge.challenge_start_point }}</li>
+                				<li class="list-group-item">Carpark {{ challenge.challenge_carpark }}</li>
+                                <li class="list-group-item">Recommended map {{ challenge.recommended_map }}</li>
+                </ul>
+						</div>
+					</div>
+				</div>
+                
+                <br>
+                <h2 class="card-title header-title" style="margin-left:5%">Route</h2>
+                <br>
+                <div class="row">
+                    <div class="container">
+                        <p><i class="fas fa-map-signs"></i> {{ challenge.Route_Step_1}}</p>
+			        </div>
+                </div>
+                <br>
+                <div class="row">
+                {% if challenge.Route_Step_2 %}
+                    <div class="container">
+                        <p><i class="fas fa-map-signs"></i> {{ challenge.Route_Step_2}}</p>
+			        </div>
+                    {% else %}
+                    <div></div>
+                {% endif %}
+                </div>
+                <br>
+                <div class="row">
+                {% if challenge.Route_Step_3 %}
+                    <div class="container">
+                        <p><i class="fas fa-map-signs"></i> {{ challenge.Route_Step_3}}</p>
+			        </div>
+                    {% else %}
+                    <div></div>
+                {% endif %}
+                </div>
+                <br>
+                <div class="row">
+                {% if challenge.Route_Step_4 %}
+                    <div class="container">
+                        <p><i class="fas fa-map-signs"></i> {{ challenge.Route_Step_4}}</p>
+			        </div>
+                    {% else %}
+                    <div></div>
+                {% endif %}
+                </div>
+                <br>
+                <div class="row">
+                {% if challenge.Route_Step_5 %}
+                    <div class="container">
+                        <p><i class="fas fa-map-signs"></i> {{ challenge.Route_Step_5}}</p>
+			        </div>
+                    {% else %}
+                    <div></div>
+                {% endif %}
+                </div>
+                <br>
+                <div class="row">
+                {% if challenge.Route_Step_6 %}
+                    <div class="container">
+                        <p><i class="fas fa-map-signs"></i> {{ challenge.Route_Step_6}}</p>
+			        </div>
+                    {% else %}
+                    <div></div>
+                {% endif %}
+                </div>
+                <br>
+                <div class="row">
+                {% if challenge.Route_Step_7 %}
+                    <div class="container">
+                        <p><i class="fas fa-map-signs"></i> {{ challenge.Route_Step_7}}</p>
+			        </div>
+                    {% else %}
+                    <div></div>
+                {% endif %}
+                </div>
+                <br>
+                <div class="row">
+                {% if challenge.Route_Step_8 %}
+                    <div class="container">
+                        <p><i class="fas fa-map-signs"></i> {{ challenge.Route_Step_8}}</p>
+			        </div>
+                    {% else %}
+                    <div></div>
+                {% endif %}
+                </div>
+                <div class="container">
+                {% if challenge.map_image %}
+						<img class="card-img" src="{{ challenge.map_image.url }}" alt="{{ challenge.name }}">
+                            {% else %}
+						<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
+						{% endif %}
+                        </div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}
