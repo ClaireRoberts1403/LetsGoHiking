@@ -2,28 +2,24 @@
 {% load static %}
 
 {% block content %}
-<div>
+<div class="container" id="crossfade">
 <!-- Hero Image for Home page -->
-<div id="crossfade">
-	<img class="bottom" src="{{ '../media/hero-image3.jpg' }}" style= "width: 100%">
-	<img class="top" src="{{ '../media/hero-image2.jpg' }}" style= "width: 100%">
-</div>
-</div>
+	<img class="bottom" src="{{ '../media/hero-image3.jpg' }}" style="background-size: 100% 100%">
+	<img class="top" src="{{ '../media/hero-image2.jpg' }}" style="background-size: 100% 100%">
 	<div class="row">
 		<div class="col">
 			<h1 class="hero-font">
 				Let's Go Hiking
 			</h1>
+            <br>
             <h2 class="hero-subtitle">Find your next challenge</h2>
 		</div>
-		<div class="row">
-        <div class="col">
-			
-		</div>
-        </div>
-		<div class="col">
+		
+    		<div class="col">
 			<button type="button" data-toggle="modal" data-target="FindOutMoreModal" class="btn find-out-more-btn">Find out more</button>
 		</div>
+        </div>
+        </div>
 
 		<!-- Modal -->
 		<div class="modal fade" id="FindOutMoreModal" tabindex="-1" aria-labelledby="FindOutMoreModalLabel"

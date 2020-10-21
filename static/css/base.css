@@ -7,6 +7,16 @@ body {
     background-color: #284664;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
 .col {
     margin-bottom: 30px;
 }
@@ -37,8 +47,28 @@ body {
     border-left-color: #284664;
     border-style: solid;
     color: #E6E7E8;
-    padding: 2rem 1.5rem 2rem;
+    padding: 0.7rem;
 }
+
+.social_networks {
+    text-align: center;
+}
+
+.social_networks li {
+    display: inline;
+    padding-left: 9%;
+    padding-right: 9%;
+}
+
+.social_networks i {
+    font-size: 200%;
+    color: #03A696;
+}
+
+.social_networks i:hover {
+    color: #007878;
+}
+
 
 /* Shopping cart with counter taken from https://www.solodev.com/ - see readme */
 
