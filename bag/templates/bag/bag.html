@@ -10,32 +10,40 @@
   </div>
 </div>
 <div class="col">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Product Name</th>
-      <th scope="col">image</th>
-      <th scope="col">price</th>
-      <th scope="col">quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>  
-  <tr>
-  <td></td>
-  <td></td>
-    <td><ul style="text-align:right"><li>Subtotal:£</li>
-    <li> Delivery fee:£</li>
-    <li><strong>Total:£</strong></li>
-    </ul></td>
-  </tr>
-  </tbody>
-</table>
+    {% if bag_items %}
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">image</th>
+            <th scope="col">price</th>
+            <th scope="col">quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            </tr>  
+        <tr>
+        <td></td>
+        <td></td>
+            <td><ul style="text-align:right"><li>Subtotal:£</li>
+            <li> Delivery fee:£</li>
+            <li><strong>Total:£</strong></li>
+            </ul></td>
+        </tr>
+        </tbody>
+        </table>
+    {% else %}
+    <div class="container-fluid">
+        <h2 class="cart_empty">Your cart is empty</h2>
+                <a href="{% url 'shop' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Keep Shopping</a>
+                <a href="{% url 'challenges' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Back to Challenges</a>
+    </div>
+    {% endif %}
 </div>
     
 		

@@ -7,17 +7,11 @@ body {
     background-color: #284664;
 }
 
-.my_footer {
-    background-color: #284664;
-    border-top-color: #FF9600;
-    border-bottom-color:#284664;
-    border-right-color: #284664;
-    border-left-color: #284664;
-    border-style: solid;
-    color: #E6E7E8;
-    padding: 2rem 1.5rem 2rem;
+.col {
+    margin-bottom: 30px;
 }
 
+/* Navbar */
 .header-title {
     font-family: 'Alfa Slab One', cursive;
     font-size: 2.5em;
@@ -34,16 +28,19 @@ body {
     padding-left: 50px!important;
 }
 
-.my-btn-dark {
-    background-color: #007878;
-    color: #E6E7E8!important;
+/* Footer */
+.my_footer {
+    background-color: #284664;
+    border-top-color: #FF9600;
+    border-bottom-color:#284664;
+    border-right-color: #284664;
+    border-left-color: #284664;
+    border-style: solid;
+    color: #E6E7E8;
+    padding: 2rem 1.5rem 2rem;
 }
 
-.my-btn-light {
-    background-color: #03A696;
-}
-
-/* style for shopping cart with counter taken from https://www.solodev.com/ - see readme */
+/* Shopping cart with counter taken from https://www.solodev.com/ - see readme */
 
 ul li a.cart {
   font-size: 2rem;
@@ -90,6 +87,8 @@ ul li a.cart .cart-basket {
     opacity:0;
 }
 
+
+/* Text styling */
 .hero-font {
     font-family: 'Alfa Slab One', cursive;
     font-size: 4em;
@@ -107,6 +106,20 @@ ul li a.cart .cart-basket {
     
 }
 
+.heading-font {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 4em;
+    color: black
+}
+
+.cart_empty {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 2em;
+    color: #E6E7E8;
+    text-align: center;
+}
+
+/* Buttons */
 .find-out-more-btn {
     background-color: #FF9600;
     margin-left: 40%; 
@@ -115,14 +128,27 @@ ul li a.cart .cart-basket {
     font-family: 'Raleway', sans-serif;
 }
 
-.challenge-card {
-    padding-top: 50px;
+.my-btn-dark {
+    background-color: #007878;
+    color: #E6E7E8!important;
 }
 
-.heading-font {
-    font-family: 'Alfa Slab One', cursive;
-    font-size: 4em;
-    color: black
+.my-btn-light {
+    background-color: #03A696;
+}
+
+.cart_empty_btns {
+    display: inline-block;
+    background-color: #FF9600;
+    font-weight: bolder;
+    font-family: 'Raleway', sans-serif;
+    margin-left: 25%;
+    margin-top: 20px;
+}
+
+/* card styling */
+.challenge-card {
+    padding-top: 50px;
 }
 
 .card-img.award_image {
@@ -140,13 +166,10 @@ ul li a.cart .cart-basket {
     transition: 0.3s;
 }
 
+
+/* Table */
 .table {
     margin-left: 15%;
     width: 70%;
     padding: 20%;
-
-}
-
-.col {
-    margin-bottom: 30px;
 }
