@@ -21,6 +21,10 @@ body {
     margin-bottom: 30px;
 }
 
+.my_hr {
+    background-color: #284664; 
+}
+
 /* Navbar */
 .header-title {
     font-family: 'Alfa Slab One', cursive;
@@ -46,8 +50,16 @@ body {
     border-right-color: #284664;
     border-left-color: #284664;
     border-style: solid;
-    color: #E6E7E8;
     padding: 0.7rem;
+}
+
+.footer_links {
+    color: #E6E7E8;
+    font-size: 1.2rem;
+}
+
+.footer_links:hover {
+    color: #03A696;
 }
 
 .social_networks {
@@ -62,11 +74,11 @@ body {
 
 .social_networks i {
     font-size: 200%;
-    color: #03A696;
+    color: #E6E7E8;
 }
 
 .social_networks i:hover {
-    color: #007878;
+    color: #03A696;
 }
 
 
@@ -174,6 +186,15 @@ ul li a.cart .cart-basket {
     font-family: 'Raleway', sans-serif;
     margin-left: 25%;
     margin-top: 20px;
+}
+
+.about_btns {
+    display: inline-block;
+    background-color: #FF9600;
+    font-weight: bolder;
+    font-family: 'Raleway', sans-serif;
+    margin-left: 15%;
+    margin-top: 10px;
 }
 
 /* card styling */

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-4 heading-font">
+			About us
+		</h1>
+        <br>
+		<h2 class="lead">
+			"Adventure is worthwhile in itself" - Amelia Earhart
+		</h2>
+		<hr class="my-4 my_hr">
+		<p class="lead">
+			Let's go hiking provides you with inspiration to get into the great outdoors join a online
+			social community who like to hike and who love a challenge.
+            <br>
+            <hr class="my-4 my_hr">
+            <br>
+			<li>Click on the link to Challenges and you will find hiking challenges that you can have an
+			adventure whilst completing and get a great award.</li>
+			<br>
+            <li>When you've found a challenge you want to do, add it to your basket and once purchased you'll get access to the full route which will guide you step by step.
+Your award will also be shipped and recieved within 5 working days.</li><br>
+<li>These awards will be patches or stickers individually designed and exclusive to purchasing the challenge.</li>
+			<br>
+<li>As a member you will then be able to share your adventure with other members through the
+community blog. This allows your hike to become more of an event and help you to create long lasting memories.</li>
+			<br>
+<li>Also check out the 'Let's go hiking' shop, for more patches, stickers and more.</p></li>
+<br>
+<a href="{% url 'home' %}" class="btn about_btns" type="button"><i class="fas fa-home"></i> Home</a>
+	<a href="{% url 'challenges' %}" class="btn about_btns" type="button"><i class="fas fa-hiking"></i> Check out
+		the Challenges</a>
+	<a href="{% url 'shop' %}" class="btn about_btns" type="button"><i class="fas fa-shopping-bag"></i> Start
+		Shopping</a>
+	</div>
+</div>
+
+
+
+
+{% endblock %}
