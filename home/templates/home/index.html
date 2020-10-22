@@ -2,57 +2,23 @@
 {% load static %}
 
 {% block content %}
-<div class="container" id="crossfade">
+<div id="crossfade">
+  <img class="bottom" src="./media/hero_image.jpg" style= "width: 100%">
+  <img class="top" src="./media/hero-image3.jpg" style= "width: 100%">
+	<img class="bottom" src="{{ '../media/hero-image3.jpg' }}" style= "width: 100%">
+	<img class="top" src="{{ '../media/hero-image2.jpg' }}" style= "width: 100%">
+</div>
+<div class="jumbotron jumbotron-fluid mb-0">
 <!-- Hero Image for Home page -->
-	<img class="bottom" src="{{ '../media/hero-image3.jpg' }}" style="background-size: 100% 100%">
-	<img class="top" src="{{ '../media/hero-image2.jpg' }}" style="background-size: 100% 100%">
-	<div class="row">
-		<div class="col">
-			<h1 class="hero-font">
-				Let's Go Hiking
-			</h1>
-            <br>
-            <h2 class="hero-subtitle">Find your next challenge</h2>
-		</div>
-		
-    		<div class="col">
-			<button type="button" data-toggle="modal" data-target="FindOutMoreModal" class="btn find-out-more-btn">Find out more</button>
-		</div>
+	
+	<h1 class="display-4 hero-font">
+			Let's Go Hiking
+		</h1>
+        <br>
+		<h2 class="lead hero-subtitle">
+			Find your next challenge
+            <a class="btn btn-lg find-out-more-btn" href="{% url 'about' %}" role="button">Find out more</a>
+		</h2>	
+        
         </div>
-        </div>
-
-		<!-- Modal -->
-		<div class="modal fade" id="FindOutMoreModal" tabindex="-1" aria-labelledby="FindOutMoreModalLabel"
-			aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Let's Go Hiking</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-					</div>
-					<div class="modal-body">
-						Let's go hiking provides you with inspiration to get into the great outdoors join a online
-						social community who like to hike and who love a challenge.
-						Click on the link to Challenges and you will find hiking challenges that you can have an
-						adventure whilst completing and get a great award.
-						<br>
-When you've found a challenge you want to do, add it to your basket and once purchased you'll get access to the full route which will guide you step by step.
-Your award will also be shipped and recieved within 5 working days.
-These awards will be patches or stickers individually designed and exclusive to purchasing the challenge.
-						<br>
-As a member you will then be able to share your adventure with other members through the
-community blog. This allows your hike to become more of an event and help you to create long lasting memories.
-						<br>
-Also check out the 'Let's go hiking' shop, for more patches, stickers and more.
-      </div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
 		{% endblock %}
