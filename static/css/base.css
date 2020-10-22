@@ -228,6 +228,11 @@ ul li a.cart .cart-basket {
     transition: 0.3s;
 }
 
+.my-card {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
 
 /* Table */
 .table {
