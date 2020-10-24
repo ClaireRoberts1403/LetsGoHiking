@@ -25,12 +25,20 @@ body {
     background-color: #284664; 
 }
 
+a {
+    color: #03A696;
+}
+
+a:hover {
+    color: #007878;
+}
+
 /* Navbar */
 .header-title {
     font-family: 'Alfa Slab One', cursive;
-    font-size: 2.5em;
+    font-size: 2em;
     color: black;
-    padding-top: 10px;
+    padding-top: 1px;
 }
 
 .navbar-brand, .navbar-tabs {
@@ -38,8 +46,8 @@ body {
 }
 
 .navbar-nav .nav-link {
-    font-size: 1.3em;
-    padding-left: 50px!important;
+    font-size: 1.1em;
+    padding-left: 20px!important;
 }
 
 /* Footer */
@@ -136,14 +144,14 @@ ul li a.cart .cart-basket {
     font-size: 4em;
     z-index: 999;
     position: absolute;
-    padding-top: 10%;
+    padding-top: 1%;
     color: black;
     margin-left: 10%;
 }
 
 .hero-subtitle {
     z-index: 999;
-    padding: 18% 22%;
+    padding: 10% 15%;
     position: absolute;
     color: black;
     font-weight: bolder;
@@ -168,7 +176,7 @@ ul li a.cart .cart-basket {
 .find-out-more-btn {
     background-color: #FF9600;
     margin-left: 40%; 
-    margin-top: 20%;
+    margin-top: 15%;
     font-weight: bolder;
     font-family: 'Raleway', sans-serif;
 }
@@ -182,8 +190,27 @@ ul li a.cart .cart-basket {
     color: #E6E7E8!important;
 }
 
+.my-btn-dark:hover {
+    background-color: #024d4d;
+    color: #E6E7E8!important;
+    font-weight: bold;
+}
+
 .my-btn-light {
     background-color: #03A696;
+}
+
+.btn.focus, .btn:focus, button.focus, button:focus, .button.is-focused:not(:active), .button:focus:not(:active) {
+    box-shadow: 0 0 0 0.4rem rgba(7, 179, 156, 0.384);
+}
+
+.btn.active, .btn:active, button:active, button:active {
+    box-shadow: 0 0 0 0.2rem #03A696;
+}
+
+.my-btn-light:hover {
+    background-color: rgb(8, 235, 212);
+    font-weight: bold;
 }
 
 .cart_empty_btns {
@@ -239,4 +266,32 @@ ul li a.cart .cart-basket {
     margin-left: 15%;
     width: 70%;
     padding: 20%;
+}
+
+/* Allauth styling */
+
+ul .profile_list {
+    margin-left: 20px;
+}
+
+form#signup_form.form-group.signup {
+    margin-left: 10%;
+}
+
+form.form-group.login {
+        margin-left: 10%;
+}
+
+.smaller-heading-font {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 3em;
+    color: black;
+    margin-left: 10%;
+}
+
+.smaller-subheading-font {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 1.5em;
+    color: black;
+    margin-left: 10%;
 }

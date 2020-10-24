@@ -5,20 +5,20 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4 heading-font">
-            Add a challenge
+            Add a product
         </h1>
-    <!-- Form for admin to add challenges to site - crispy -->
+    <!-- Form for admin to add product to site - crispy -->
     </div>
 </div>
     <div class="container" style="color:white">
         <div class="row">
             <div class="col">
-                <form method="POST" action="{% url 'add_challenge' %}" class="form" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'add_product' %}" class="form" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy }}
                     <div class="text-right">
-                        <a class="btn my-btn-light" href="{% url 'challenges' %}">Cancel</a>
-                        <button class="button my-btn-dark" type="submit">Add Challenge</button>
+                        <a class="btn my-btn-light" href="{% url 'shop' %}">Cancel</a>
+                        <button class="button my-btn-dark" type="submit">Add Product</button>
                     </div>
                     <br>
                 </form>

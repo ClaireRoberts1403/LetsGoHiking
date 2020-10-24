@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .models import product, category
+from .forms import productForm
 
 
 def shop(request):
@@ -17,3 +18,22 @@ def shop(request):
     }
 
     return render(request, 'shop/shop.html', context)
+
+
+def add_product(request):
+
+    if request.method == 'POST':
+        form = productForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('add_product'))
+    else:
+        form = productForm()
+
+    form = productForm()
+    template = 'shop/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

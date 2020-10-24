@@ -1,11 +1,98 @@
-<!DOCTYPE html>
-<html>
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+	{% block meta %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	{% endblock %}
+
+	{% block extra_meta %}
+	{% endblock %}
+
+	{% block corecss %}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '../media/apple-touch-icon.png' }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '../media/favicon-32x32.png' }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '../media/favicon-16x16.png' }}">
+	{% endblock %}
+
+	{% block extra_css %}
+	{% endblock %}
+
+	{% block corejs %}
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+	<script src="https://kit.fontawesome.com/90ed803b97.js" crossorigin="anonymous"></script>
+	{% endblock %}
   <head>
-    <title>{% block head_title %}{% endblock %}</title>
+    <title>Let's Go Hiking! {% block head_title %}{% endblock %}</title>
     {% block extra_head %}
     {% endblock %}
   </head>
   <body>
+	<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand header-title" href="#">
+    <img src="{{ '../media/HEADERLOGO.png' }}" height="100" width="100" alt="Site Logo">Let's Go Hiking
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'challenges' %}">Challenges</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="{% url 'shop' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Shop
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'shop' %}?category=patches">Patches</a>
+          <a class="dropdown-item" href="{% url 'shop' %}?category=stickers">Stickers</a>
+          <a class="dropdown-item" href="{% url 'shop' %}?category=hats">Hats</a>
+          <a class="dropdown-item" href="{% url 'shop' %}?category=waterBottles">Water Bottles</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'shop' %}">Shop Everything</a>
+        </div>
+      </li>
+      <!-- code for shopping cart icon with counter from solodev.com - see read me for full link -->
+      <li class="nav-item px-3 text-uppercase mb-0 position-relative d-lg-flex">
+        <div id="cart" class="d-none">
+        </div>
+        <a href="{% url 'bag' %}" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+          <i class="fas fa fa-shopping-cart fa-lg"></i>
+          <span class="cart-basket d-flex align-items-center justify-content-center">
+            0<!-- change this to show items in cart functionality-->
+          </span>
+        </a>
+      </li>
+    </ul>
+    
+    <div class="buttons">
+          <a href="{% url 'account_signup' %}" class="button btn my-btn-light" type="button">Sign Up</a>
+          <a href="{% url 'account_login' %}" class="button btn my-btn-dark" type="button">Log In</a>
+        </div>
+  </div>
+</nav>
+
     {% block body %}
 
     {% if messages %}
@@ -19,15 +106,18 @@
     </div>
     {% endif %}
 
-    <div>
-      <strong>Menu:</strong>
-      <ul>
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h2 class="heading-font"><strong>Your Profile</strong></h2>
+        <br>
+        <hr class="my-4 my_hr">
+      <ul class="profile_list">
         {% if user.is_authenticated %}
         <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
         <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
         {% else %}
-        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+        <li><a href="{% url 'account_login' %}"></a></li>
+        <li><a href="{% url 'account_signup' %}"></a></li>
         {% endif %}
       </ul>
     </div>
