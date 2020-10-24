@@ -16,56 +16,13 @@
         <thead>
             <tr>
             <th scope="col">Name</th>
-            <th scope="col"></th>
+            <th scope="col">{{ bag_items }}</th>
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
             </tr>
         </thead>
         <tbody>        
-        {% for item in bag_items %}
-
-            <tr>
-            <th>{{ item.product.name }}</th>
-            <td>{% if product.product_image %}
-						<img class="card-img" src="{{ product.product_image.url }}" alt="{{ product.name }}">
-                    {% else %}
-						<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ product.name }}">
-				{% endif %}</td>
-
-            <td>£{{ item.product.product_price }}</td>
-<!-- Need to add in messages funcationality -->
-            <td><form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
-                {% csrf_token %}
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button class="decrement-qty btn" 
-                                data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                <span>
-                                    <i class="fas fa-minus-square fa-sm"></i>
-                                </span>
-                            </button>
-                        </div>
-                        <input class="form-control form-control-sm qty_input" type="number"
-                            name="quantity" value="{{ item.quantity }}" min="1" max="10"
-                            data-item_id="{{ item.item_id }}"
-                            id="id_qty_{{ item.item_id }}">
-                        <div class="input-group-append">
-                            <button class="increment-qty btn"
-                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                <span>
-                                    <i class="fas fa-plus-square fa-sm"></i>
-                                </span>
-                            </button>
-                        </div>
-                        </div>
-                        </div>
-                        </form>
-                        </td>
-            </tr>  
         <tr>
-        
-        {% endfor %}
         <td></td>
         <td></td>
             <td><ul style="text-align:right"><li>Subtotal:£ {{ total|floatformat:2 }}</li>
@@ -78,7 +35,7 @@
         <!-- Needs Checkout functionality -->
             <a href="{% url 'shop' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Keep Shopping</a>
             <a href="{% url 'challenges' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Back to Challenges</a>
-            <a href="{% url 'checkout' %}" class="btn btn-lrg my-btn-light">
+            <a href="#" class="btn btn-lrg my-btn-light">
                 <span class="text-uppercase">Secure Checkout</span>
                 <span class="icon">
                     <i class="fas fa-lock"></i>
