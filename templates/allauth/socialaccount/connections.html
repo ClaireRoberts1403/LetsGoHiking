@@ -5,10 +5,10 @@
 {% block head_title %}{% trans "Account Connections" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Account Connections" %}</h1>
+<h1 class="smaller-heading-font">{% trans "Account Connections" %}</h1>
 
 {% if form.accounts %}
-<p>{% blocktrans %}You can sign in to your account using any of the following third party accounts:{% endblocktrans %}</p>
+<p class="smaller-subheading-font">{% blocktrans %}You can sign in to your account using any of the following third party accounts:{% endblocktrans %}</p>
 
 
 <form method="post" action="{% url 'socialaccount_connections' %}">
@@ -32,7 +32,7 @@
 {% endfor %}
 
 <div>
-<button type="submit">{% trans 'Remove' %}</button>
+<button class="btn my-btn-dark" type="submit">{% trans 'Remove' %}</button>
 </div>
 
 </fieldset>
