@@ -96,6 +96,10 @@ TEMPLATES = [
         },
     },
 ]
+# For using Bootstrap Toasts
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+
 # Needed to login by username in Django admin, regardless of `allauth`
 # `allauth` specific authentication methods, such as login by e-mail
 AUTHENTICATION_BACKENDS = [

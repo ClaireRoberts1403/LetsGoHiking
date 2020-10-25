@@ -23,3 +23,4 @@ Guidence/Resourses from
 "for guidence on cripsy forms set up https://django-crispy-forms.readthedocs.io/en/latest/index.html"
 "Transitions of images on home page from https://cssreset.com/how-to-create-the-perfect-image-crossfade-with-css3-transitions/"
 "Shopping cart with item counter from https://www.solodev.com/blog/web-design/how-to-show-the-total-number-of-items-in-customer-shopping-carts.stml"
+"Bootstrap toasts https://getbootstrap.com/docs/4.3/components/toasts/"
