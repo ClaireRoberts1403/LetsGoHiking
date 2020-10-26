@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'shop',
     'bag',
     'profiles',
-   
+    'payments.apps.PaymentsConfig',
 ]
 
 MIDDLEWARE = [
@@ -208,3 +208,9 @@ if 'USE_AWS' in os.environ:
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+
+# Strip API Keys
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51HZDumBr9rDAn4pHhR9viH3NbBYSif3xmLDYkpWkP3trKnCPiP9ZnhwuXpZTjJVau7qRB7bIIy8H1PhlAShE06fu00OEmLsz6Q'
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_ENDPOINT_SECRET = os.environ.get('STRIPE_ENDPOINT_SECRET')
