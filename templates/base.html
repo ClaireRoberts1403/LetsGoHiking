@@ -76,7 +76,13 @@
                     <div id="cart" class="d-none"></div>
                     <a href="{% url 'bag' %}" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
                         <i class="fas fa fa-shopping-cart"></i>
-                        <span class="cart-basket d-flex align-items-center justify-content-center"> 0<!-- change this to show items in cart functionality--> </span>
+                        <!-- show item count in cart -->
+                        {% if grand_total %}
+                                       <span class="cart-basket d-flex align-items-center justify-content-center">{{ product_count|floatformat:0 }}</span>
+                                    {% else %}
+                                       <span class="cart-basket d-flex align-items-center justify-content-center"> 0 </span>
+                                    {% endif %}
+                        
                     </a>
                 </li>
                 </ul>
