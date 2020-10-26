@@ -2,6 +2,7 @@ from django.conf import settings
 from django.shortcuts import render
 from django.urls import reverse
 
+
 import stripe
 
 
@@ -27,7 +28,7 @@ def payment(request):
             }],
         mode="payment",
         success_url=request.build_absolute_uri(reverse('success')) + '?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url=request.build_absolute_uri(reverse('cancelled')),
+        cancel_url=request(reverse('payment')),
     )
 
     context = {
