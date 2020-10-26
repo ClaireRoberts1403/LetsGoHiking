@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
     <div class="jumbotron jumbotron-fluid">
@@ -57,7 +58,7 @@
                                         <a class="remove-item float-right" id="remove_{{ item.item_id }}"><small><i class="fas fa-trash-alt"></i> Remove</small></a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">£ </p>
+                                        <p class="my-0">£ {{ item.product.product_price | calc_subtotal:item.quantity }}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
