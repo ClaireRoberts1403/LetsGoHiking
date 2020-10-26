@@ -31,8 +31,8 @@
                             {% for item in bag_items %}
                                 <tr>
                                     <td class="p-3 w-25">
-                                        {% if item.product.image %}
-                                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                        {% if item.product.product_image %}
+                                        <img class="img-fluid" src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}">
                                         {% else %}
                                         <img class="img-fluid" src="{{ MEDIA_URL }}lost_image.png" alt="{{ item.product.name }}">
                                         {% endif %}
@@ -41,7 +41,7 @@
                                         <p><strong>{{ item.product.name }}</strong></p>
                                     </td>
                                     <td>
-                                        <p>£{{ item.product.price }}</p>
+                                        <p>£{{ item.product.product_price }}</p>
                                     </td>
                                     <td>
                                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">

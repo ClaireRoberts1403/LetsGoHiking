@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, reverse
-from .models import product, category
-from .forms import productForm
+from .models import Product, Category
+from .forms import ProductForm
 
 
 def shop(request):
-    products = product.objects.all()
+    products = Product.objects.all()
     categories = None
 
     if request.GET:
@@ -23,14 +23,14 @@ def shop(request):
 def add_product(request):
 
     if request.method == 'POST':
-        form = productForm(request.POST, request.FILES)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect(reverse('add_product'))
     else:
-        form = productForm()
+        form = ProductForm()
 
-    form = productForm()
+    form = ProductForm()
     template = 'shop/add_product.html'
     context = {
         'form': form,

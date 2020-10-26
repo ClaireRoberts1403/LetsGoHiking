@@ -9,10 +9,10 @@ CATEGORY = (
 )
 
 
-class category(models.Model):
+class Category(models.Model):
 
     class Meta:
-        verbose_name_plural = 'categories'
+        verbose_name_plural = 'Categories'
 
     name = models.CharField(max_length=254)
 
@@ -20,7 +20,7 @@ class category(models.Model):
         return self.name
 
 
-class product(models.Model):
+class Product(models.Model):
     name = models.CharField(max_length=254)
     product_price = models.DecimalField(max_digits=6, decimal_places=2)
     product_description = models.TextField()

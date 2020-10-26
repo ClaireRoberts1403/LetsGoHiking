@@ -49,13 +49,27 @@
 									<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
 								{% endif %}
 								</li>
+                                <li class="list-group-item">Price: £ {{ challenge.challenge_price }}</li>
 							</ul>
                             <!-- Add to cart functionality -->
-							<ul class="list-group list-group-horizontal"><li class="list-group-item">Price: £ {{ challenge.challenge_price }}</li>
-								<li class="list-group-item">
-                                    <a href="#"><button type="button" class="btn btn-info my-btn-dark text-nowrap">
-                                        Add to cart</button></a></li>
-							</ul>
+							<br>
+                            <form class="form" action="{% url 'add_to_bag' challenge.id %}" method="POST">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <p class="mt-3">
+                                                <strong> Quantity:</strong>
+                                                    <input class="form-control qty_input" type="number" name="quantity" 
+                                                    value="1" min="1" max="99" data-item_id="{{ challenge.id }}" id="id_qty_{{ challenge.id }}"/></p>
+                                                <div class="form-row ml-5"><input type="submit" class="btn my-btn-dark" value="Add to Cart"/></div>
+                                            </div>
+                                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
 						</div>
 					</div>
 				</div>
