@@ -25,3 +25,4 @@ Guidence/Resourses from
 "Shopping cart with item counter from https://www.solodev.com/blog/web-design/how-to-show-the-total-number-of-items-in-customer-shopping-carts.stml"
 "Bootstrap toasts https://getbootstrap.com/docs/4.3/components/toasts/"
 "Payment app from Stripe https://testdriven.io/blog/django-stripe-tutorial/"
+"Payment app from https://www.youtube.com/watch?v=JwhEjEqG43M"
