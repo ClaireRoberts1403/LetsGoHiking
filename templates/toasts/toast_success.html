@@ -1,5 +1,5 @@
 <div aria-live="assertive" aria-atomic="true" data-autohide="false" style="position: relative; min-height: 200px;">
-    <div class="toast" data-delay="1000" style="position: absolute; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast" data-delay="1000" data-autohide="false" style="position: absolute; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
         <img src="../media/favicon-32x32.png" class="rounded mr-2" alt="site-logo">
         <strong class="mr-auto smaller-subheading-font"><i class="fas fa-check" style="color:green"></i>Success!</strong>
@@ -9,7 +9,8 @@
         </button>
     </div>
     <div class="toast-body">
-        The item was added to your cart.
+    {{ message }}
+        
     </div>
     </div>
 </div>

@@ -87,10 +87,15 @@
                 </li>
                 </ul>
                 </div>
+                {% if request.user.is_authenticated %}
+                <div class="buttons" display="none">
+                {% else %}
                 <div class="buttons">
                     <a href="{% url 'account_signup' %}" class="button btn my-btn-light" type="button">Sign Up</a>
                     <a href="{% url 'account_login' %}" class="button btn my-btn-dark" type="button">Log In</a>
                 </div>
+                </div>
+                {% endif %}
         </nav>
 
         {% if messages %}
