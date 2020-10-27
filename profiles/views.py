@@ -5,8 +5,23 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 
+def profiles(request):
+
+    return render(request, 'profiles/profiles.html')
+
+
+def my_order_history(request):
+
+    return render(request, 'profiles/my_order_history.html')
+
+
+def my_challenges(request):
+
+    return render(request, 'profiles/my_challenges.html')
+
+
 @login_required
-def profile(request):
+def userprofile(request):
 
     profile = get_object_or_404(UserProfile, user=request.user)
 
@@ -18,12 +33,13 @@ def profile(request):
         else:
             messages.error(request, 'Update failed. Please ensure the form is valid.')
     else:
-        form = UserProfileForm(instance=profile)
+        form = UserProfileForm(instance=profiles)
     orders = profiles.orders.all()
 
-    template = 'profiles/profiles.html'
     context = {
         'form': form,
         'orders': orders,
         'on_profile_page': True
     }
+
+    return render(request, 'profiles/profiles.html', context)
