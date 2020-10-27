@@ -39,7 +39,7 @@
                             <p class="lead text-center font-weight-bold">£{{product.product_price}}</p>
                             
                             <!-- Add to cart functionality -->
-                            <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+                            <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                                 {% csrf_token %}
                                 <div class="form-row">
                                     <div class="col-12">
