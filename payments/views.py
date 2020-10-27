@@ -23,7 +23,7 @@ def payment(request):
     session = stripe.checkout.Session.create(
         payment_method_types=["card"],
         items_id=[{
-            "price": 'price',
+            "price": 'price_1HgYVJBr9rDAn4pHQED1F69Q',
             "quantity": 1,
             }],
         mode="payment",

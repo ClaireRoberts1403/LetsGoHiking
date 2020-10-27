@@ -45,7 +45,7 @@
                                         <p>£{{ item.product.product_price }}</p>
                                     </td>
                                     <td>
-                                        <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
+                                        <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <input class="form-control form-control-sm qty_input" type="number"
@@ -55,7 +55,7 @@
                                             </div>
                                         </form>
                                         <a class="update-link"><small>Update</small></a>
-                                        <a class="remove-item float-right" id="remove_{{ item.item_id }}"><small><i class="fas fa-trash-alt"></i> Remove</small></a>
+                                        <a class="delete-item float-right" id="delete_{{ item.item_id }}"><small><i class="fas fa-trash-alt"></i> Delete</small></a>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">£ {{ item.product.product_price | calc_subtotal:item.quantity }}</p>
@@ -106,11 +106,11 @@
         form.submit();
     })
 
-    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
+    // delete item and reload on click
+    $('.delete-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/cart/remove/${itemId}/`;
+        var itemId = $(this).attr('id').split('delete_')[1];
+        var url = `/cart/delete/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
 
         $.post(url, data)
