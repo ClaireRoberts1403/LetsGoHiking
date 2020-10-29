@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from .models import challenge
-from .forms import challengeForm
+from .forms import ChallengeForm
+from django.contrib.auth.decorators import login_required
 
 
 def challenges(request):
@@ -18,17 +19,18 @@ def full_challenge(request):
     return render(request, 'challenges/full_challenge.html', {'challenges': challenges})
 
 
+@login_required
 def add_challenge(request):
 
     if request.method == 'POST':
-        form = challengeForm(request.POST, request.FILES)
+        form = ChallengeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect(reverse('add_challenge'))
     else:
-        form = challengeForm()
+        form = ChallengeForm()
 
-    form = challengeForm()
+    form = ChallengeForm()
     template = 'challenges/add_challenge.html'
     context = {
         'form': form,

@@ -3,20 +3,24 @@
 {% block extra_title %} My order history{% endblock %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
 <!-- Sidenav -->
 <div class="sidenav">
     <img src="{{ '../media/no_profile_image.png' }}" alt="Avatar" style="border-radius: 50%;">
 	<a href="{% url 'profiles' %}">Your profile</a>
     <a href="{% url 'my_challenges' %}">Your challenges</a>
 	<a href="{% url 'my_order_history' %}">Your order history</a>
-    <a href="#">Submit a idea for a challenge</a>		
+    <a href="{% url 'submit_idea' %}">Submit a idea for a challenge</a>		
 </div>
 <div class="main" style="background-color: #E6E7E8;">
 <h1 class="display-4 heading-font">My order history</h1>
 <div>
 <div class="main">
+<div class="card">
+<h2> Order : </h2>
+</div>
 </div>
   
 </div>
-
+{% endif %}
 {% endblock %}

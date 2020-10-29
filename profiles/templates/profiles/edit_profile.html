@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% load static %}
+
+{% block extra_title %} Profile {% endblock %}
+
+{% block content %}
+<!-- Sidenav -->
+{% if request.user.is_authenticated %}
+<div class="sidenav">
+    <img src="{{ '../media/no_profile_image.png' }}" alt="Avatar" style="border-radius: 50%;">
+	<a href="{% url 'profiles' %}">Your profile</a>
+    <a href="{% url 'my_challenges' %}">Your challenges</a>
+	<a href="{% url 'my_order_history' %}">Your order history</a>
+    <a href="{% url 'submit_idea' %}">Submit a idea for a challenge</a>	
+</div>
+<div class="main" style="background-color: #E6E7E8;">
+<h1 class="display-4 heading-font">Edit Profile</h1>
+<div>
+<div class="main">
+<div class="container" style="color:black">
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="{% url 'edit_profile' %}" class="form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="text-right">
+                        <a class="btn my-btn-light" href="{% url 'profiles' %}">Cancel</a>
+                        <button class="button my-btn-dark" type="submit">Save changes</button>
+                    </div>
+                    <br>
+                </form>
+                <br>
+            </div>            
+        </div>
+    </div>
+</div>
+  
+</div>
+
+{% endif %}
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+{% endblock %}

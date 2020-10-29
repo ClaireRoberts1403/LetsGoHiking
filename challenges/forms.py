@@ -2,7 +2,7 @@ from django import forms
 from .models import challenge
 
 
-class challengeForm(forms.ModelForm):
+class ChallengeForm(forms.ModelForm):
 
     class Meta:
         model = challenge

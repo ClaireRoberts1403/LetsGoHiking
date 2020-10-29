@@ -1,45 +1,75 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
+from challenges.models import challenge
+from challenges.forms import ChallengeForm
 
 
+@login_required
 def profiles(request):
+
+    profile = get_object_or_404(UserProfile, user=request.user)
+    if request.method == 'GET':
+        form = UserProfileForm(request.GET, request.FILES)
+    else:
+        form = UserProfileForm()
 
     return render(request, 'profiles/profiles.html')
 
 
+@login_required
 def my_order_history(request):
 
     return render(request, 'profiles/my_order_history.html')
 
 
+@login_required
 def my_challenges(request):
 
     return render(request, 'profiles/my_challenges.html')
 
 
 @login_required
-def userprofile(request):
+def edit_profile(request):
 
-    profile = get_object_or_404(UserProfile, user=request.user)
+    is_superuser = request.user.is_superuser
+
+    if not is_superuser:
+            form.base_fields['user'].disabled = True
 
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=profile)
+        form = UserProfileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')
-        else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            return redirect(reverse('profiles'))
     else:
-        form = UserProfileForm(instance=profiles)
-    orders = profiles.orders.all()
+        form = UserProfileForm()
 
+    form = UserProfileForm()
+    template = 'profiles/edit_profile.html'
     context = {
         'form': form,
-        'orders': orders,
-        'on_profile_page': True
     }
 
-    return render(request, 'profiles/profiles.html', context)
+    return render(request, template, context)
+
+
+@login_required
+def submit_idea(request):
+    if request.method == 'POST':
+        form = ChallengeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('profiles'))
+    else:
+        form = ChallengeForm()
+
+    form = ChallengeForm()
+    template = 'profiles/submit_idea.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
