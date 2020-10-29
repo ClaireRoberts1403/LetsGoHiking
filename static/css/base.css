@@ -142,7 +142,6 @@ ul li a.cart .cart-basket {
 .hero-font {
     font-family: 'Alfa Slab One', cursive;
     font-size: 4em;
-    z-index: 999;
     position: absolute;
     padding-top: 1%;
     color: black;
@@ -172,6 +171,14 @@ ul li a.cart .cart-basket {
     text-align: center;
 }
 
+.smaller-shop-font {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 2em;
+    color: black;
+    margin-left: 5%;
+    margin-top: 1.5%;
+}
+
 /* Buttons */
 .find-out-more-btn {
     background-color: #FF9600;
@@ -188,6 +195,7 @@ ul li a.cart .cart-basket {
 .my-btn-dark {
     background-color: #007878;
     color: #E6E7E8!important;
+    font-weight: bold;
 }
 
 .my-btn-dark:hover {
@@ -198,6 +206,7 @@ ul li a.cart .cart-basket {
 
 .my-btn-light {
     background-color: #03A696;
+    font-weight: bold;
 }
 
 .btn.focus, .btn:focus, button.focus, button:focus, .button.is-focused:not(:active), .button:focus:not(:active) {
@@ -252,6 +261,38 @@ ul li a.cart .cart-basket {
     font-family: 'Alfa Slab One', cursive;
     font-size: 1.2em;
     color: black;
+}
+
+/*shop stylings */
+
+.shop-header {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 2.1em;
+    color: black;
+}
+
+.shop-price {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 1.5em;
+    color: black;
+}
+
+.quantity-label {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 1.5em;
+    color: black;
+    margin-left: 20px;
+    margin-right: 60px;
+}
+
+.shop-quantity {
+    margin-left: 20px;
+    margin-right: 60px;
+
+}
+
+.my-btn-dark .shop {
+    margin-left: 30px;
 }
 
 /* Table */
@@ -329,3 +370,26 @@ form.form-group.login {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+
+/* Media Queires */
+
+@media (min-width: 576px) {
+.col-sm-6 {
+    margin-bottom: 20px;
+}}
+
+@media (min-width: 768px) {
+.col-md-6 {
+    margin-bottom: 20px;
+}}
+
+@media (min-width: 992px) {
+.col-lg-4 {
+    margin-bottom: 30px;
+}}
+
+@media (min-width: 1200px) {
+.col-xl-3 {
+    margin-bottom: 30px;
+}}
