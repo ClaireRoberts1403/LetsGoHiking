@@ -236,9 +236,7 @@ ul li a.cart .cart-basket {
 }
 
 /* card styling */
-.challenge-card {
-    padding-top: 50px;
-}
+
 
 .card-img.award_image {
     width: 100px;
@@ -254,23 +252,6 @@ ul li a.cart .cart-basket {
     font-family: 'Alfa Slab One', cursive;
     font-size: 1.2em;
     color: black;
-}
-
-.card-img.award_image:focus {
-    position:relative;
-    top:-25px;
-    left:-35px;
-    width:300px;
-    height:auto;
-    display:block;
-    z-index:999;
-    transition: 0.3s;
-}
-
-.my-card {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
 }
 
 /* Table */
