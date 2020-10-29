@@ -12,7 +12,7 @@ def challenges(request):
 
 # Login in required needs adding/confirmation of payment
 
-
+@login_required
 def full_challenge(request):
     challenges = challenge.objects.all()
 

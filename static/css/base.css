@@ -241,10 +241,22 @@ ul li a.cart .cart-basket {
 }
 
 .card-img.award_image {
-    width: 50px;
+    width: 100px;
 }
 
-.card-img.award_image:hover {
+.challenge-header {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 3em;
+    color: black;
+}
+
+.challenge-subheader {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 1.2em;
+    color: black;
+}
+
+.card-img.award_image:focus {
     position:relative;
     top:-25px;
     left:-35px;
