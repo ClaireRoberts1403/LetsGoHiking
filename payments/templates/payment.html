@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% load static %}
-{% block extra_js %}<script src="{% static 'js/main.js' %}"></script>
-<script src="https://js.stripe.com/v3/"></script>{% endblock %}
+{% block extra_js %}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{% static 'js/main.js' %}"></script>{% endblock %}
 
 
 {% block content %}
@@ -8,7 +9,7 @@
 
 	<div class="container">
 		<h2 class="smaller-heading-font">Ready to check out? 
-		<button class="button is-primary" id="buy_now_btn"><i class="fas fa-lock"></i>  Secure Checkout with Stripe</button></h2>
+		<button class="button is-primary" id="buy_now_btn"><i class="fas fa-lock"></i> Secure Checkout with Stripe</button></h2>
 	<h6 class="smaller-subheading-font"><strong>Total:£ {{ grand_total|floatformat:2 }}</strong></h6>
     </div>
 	<br>
@@ -20,22 +21,26 @@
 </section>
 
 <script>
-	var stripe = Stripe('{{ stripe_publishable_key }}');
-
+	
     const buy_now_button = document.querySelector('#buy_now_btn')
 
     buy_now_button.addEventListener('click', event => {   
-                
-        stripe.redirectToCheckout({
+        fetch('/checkout/')
+        .then((result) => {return result.json() })
+        .then((data) => {
+            var stripe = Stripe(data.stripe_publishable_key);
+
+            stripe.redirectToCheckout({
         // Make the id field from the Checkout Session creation API response
         // available to this file, so you can provide it as parameter here
         // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-            sessionId: '{{ session_id }}'
+            sessionId: data.session_id
         }).then(function (result) {
             // If `redirectToCheckout` fails due to a browser or network
             // error, display the localized error message to your customer
             // using `result.error.message`.
-        });
+        });        
+        })
     })
 </script>
 

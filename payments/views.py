@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.shortcuts import render
 from django.urls import reverse
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 import stripe
@@ -18,12 +20,18 @@ def cancelled(request):
 
 def payment(request):
 
+    return render(request, 'payment.html')
+
+
+@csrf_exempt
+def checkout(request):
+
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     session = stripe.checkout.Session.create(
         payment_method_types=["card"],
         items_id=[{
-            "price": 'price_1HgYVJBr9rDAn4pHQED1F69Q',
+            "price": 'grand_total',
             "quantity": 1,
             }],
         mode="payment",
@@ -31,8 +39,7 @@ def payment(request):
         cancel_url=request(reverse('payment')),
     )
 
-    context = {
+    JsonResponse({
         'session_id': session.id,
         'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY
-    }
-    return render(request, 'payment.html', context)
+    })
