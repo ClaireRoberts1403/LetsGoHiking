@@ -22,7 +22,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=254)
-    product_price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     product_description = models.TextField()
     category = models.ForeignKey('category', null=True, blank=True, on_delete=models.SET_NULL)
     product_image = models.ImageField(null=True, blank=True)
