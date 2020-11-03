@@ -44,14 +44,14 @@
                                         <p><strong>{{ item.product.name }}</strong></p>
                                     </td>
                                     <td>
-                                        <p>£{{ item.product.product_price }}</p>
+                                        <p>£{{ item.product.price }}</p>
                                     </td>  
                                     <td>
                                         <p data-item_id="{{ item.item_id }}"
                                                         id="id_qty_{{ item.item_id }}">{{ item.quantity }}</p>
                                     </td> 
                                     <td class="py-3">
-                                        <p class="my-0">£ {{ item.product.product_price | calc_subtotal:item.quantity }}</p>
+                                        <p class="my-0">£ {{ item.product.price | calc_subtotal:item.quantity }}</p>
                                     </td>                                       
                                     
                                 </tr>
@@ -99,9 +99,10 @@
                         <legend class="fieldset-label smaller-subheading-font ml-1 mb-5 px-2 w-auto">Payment</legend>
                         <h2 class="challenge-subheader mb-3">Please enter your card details</h2>
                             <div class="mb-5 payment-border-box" id="card-element"></div>
-
                         <!-- Used to display form errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        <!-- Pass the client secret to the view so we can get the payment intent id -->
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
                     <tr>
                     <td>
@@ -125,6 +126,13 @@
         </div>
     </div>
 </section>
+<div id="loading-overlay">
+        <h1 class="text-light logo-font loading-spinner">
+            <span class="icon">
+                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+            </span>
+        </h1>
+    </div>
 
 {% endblock %}
 

@@ -5,6 +5,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 from challenges.models import challenge
 from challenges.forms import ChallengeForm
+from payment.models import Order
 
 
 @login_required
@@ -73,3 +74,15 @@ def submit_idea(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def order_history(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+
+    context = {
+        'order': order,
+        'from_profile': True,
+    }
+
+    return render(request, context)
