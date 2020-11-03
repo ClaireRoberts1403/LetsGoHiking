@@ -111,7 +111,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -211,6 +210,20 @@ if 'USE_AWS' in os.environ:
 
 
 # Strip API Keys
-STRIPE_PUBLIC_KEY = 'pk_test_51HZDumBr9rDAn4pHhR9viH3NbBYSif3xmLDYkpWkP3trKnCPiP9ZnhwuXpZTjJVau7qRB7bIIy8H1PhlAShE06fu00OEmLsz6Q'
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_ENDPOINT_SECRET = os.environ.get('STRIPE_ENDPOINT_SECRET')
+
+STRIPE_CURRENCY = 'gbp'
+
+if 'DEVELOPEMENT' in os.environ: 
+    DEFAULT_FROM_EMAIL = 'letsgohiking@example.com'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smpt.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smpt.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
