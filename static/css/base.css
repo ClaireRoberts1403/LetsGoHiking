@@ -372,6 +372,19 @@ form.form-group.login {
 }
 
 
+/* Stripe styling */
+
+.payment-border-box {
+  padding: 10px 20px 11px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray; 
+  border-radius: 5px;
+  width: 100%;
+}
+
+
+
 /* Media Queires */
 
 @media (min-width: 576px) {
