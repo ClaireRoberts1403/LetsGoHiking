@@ -14,13 +14,13 @@
 	{% endblock %}
 
 	{% block corecss %}
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-	<link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ '../media/apple-touch-icon.png' }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ '../media/favicon-32x32.png' }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ '../media/favicon-16x16.png' }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+	<link rel="stylesheet" href="{% static 'css/base.css' %}" />
+	<link rel="apple-touch-icon" sizes="180x180" href="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/favicon-16x16.png" />
 	{% endblock %}
 
 	{% block extra_css %}
@@ -37,6 +37,7 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 	</script>
 	<script src="https://kit.fontawesome.com/90ed803b97.js" crossorigin="anonymous"></script>
+      <script src="https://js.stripe.com/v3/"></script>
 	{% endblock %}
   <head>
     <title>Let's Go Hiking! {% block head_title %}{% endblock %}</title>
@@ -46,7 +47,7 @@
   <body>
 	<nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand header-title" href="#">
-    <img src="{{ '../media/HEADERLOGO.png' }}" height="100" width="100" alt="Site Logo">Let's Go Hiking
+    <img src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/HEADERLOGO.png" height="100" width="100" alt="Site Logo">Let's Go Hiking
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
