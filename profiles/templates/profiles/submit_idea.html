@@ -7,7 +7,11 @@
 <!-- Sidenav -->
 {% if request.user.is_authenticated %}
 <div class="sidenav">
-	<img src="{{ '../media/no_profile_image.png' }}" alt="Avatar" style="border-radius: 50%;">
+{% if Userprofile.user_image %}
+	<img class="card-img" src="{{ userprofile.user_image.url }}" alt="Profile Image" style="border-radius: 50%;">
+{% else %}
+	<img class="card-img" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/lost_image.png" alt="Avatar" style="border-radius: 50%;">
+{% endif %}
 	<a href="{% url 'profiles' %}">Your profile</a>
 	<a href="{% url 'my_challenges' %}">Your challenges</a>
 	<a href="{% url 'my_order_history' %}">Your order history</a>
