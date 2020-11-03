@@ -35,14 +35,14 @@
 								<p class="challenge-header">{{ challenge.name }}</p>
 								<p class="challenge-subheader">{{ challenge.challenge_description }}</p>
 								<br>
-								<p>Difficulty: {{ challenge.challenge_difficulty_rating }}</p>
+								<p><i class="far fa-grin-beam-sweat mr-2"></i> Difficulty: {{ challenge.challenge_difficulty_rating }}</p>
 
 							</td>
 							<td>
 								<p class="text-nowrap py-4" style="color:white">------------------------------------</p> <!-- Hack job to stop challenge discription to overflowing and altering button set up-->
-								<p class="py-4">Distance: {{ challenge.challenge_distance }} KM</p>
-								<p class="py-4">Ascent: {{ challenge.challenge_ascent }} M</p>
-								<p class="text-nowrap py-4">Estimated time: {{ challenge.challenge_estimate_time }} Hours</p>
+								<p class="py-4"><i class="fas fa-route mr-2"></i> Distance: {{ challenge.challenge_distance }} KM</p>
+								<p class="py-4"><i class="fas fa-mountain mr-2"></i> Ascent: {{ challenge.challenge_ascent }} M</p>
+								<p class="text-nowrap py-4"><i class="far fa-clock mr-2"></i> Estimated time: {{ challenge.challenge_estimate_time }} Hours</p>
                                 <br>   
 							</td>
 						</tr>
@@ -50,13 +50,13 @@
 					<tbody>
 						<tr>
 							<td class="py-4">
-								<p class="my-0">Location: {{ challenge.challenge_location }}</p>
+								<p class="my-0"><i class="fas fa-map-marked-alt ml-2 mr-2"></i> Location: {{ challenge.challenge_location }}</p>
 							</td>
 							<td class="py-4">
 								<p class="challenge-subheader">For purchasing this challenge pack you'll revieve a
-									{{ challenge.challenge_award_name }}</p>
+									{{ challenge.challenge_award_name }} and access to the full route information</p>
                                     <br>
-                                    <p class="challenge-subheader">Price: £ {{ challenge.challenge_price }}</p>
+                                    
 							</td>
 							<td class="py-4">
 								{% if challenge.challenge_image %}
@@ -68,7 +68,7 @@
 						</tr>
 						<tr>
                             <td class="py-4"></td>
-                            <td class="py-4"></td>
+                            <td class="py-4"><p class="challenge-subheader text-center mt-5">Price: £ {{ challenge.challenge_price }}</p></td>
 							<td class="py-4">
 								<form class="form" action="{% url 'add_to_cart' challenge.id %}" method="POST">
 									{% csrf_token %}
