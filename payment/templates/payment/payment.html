@@ -94,28 +94,29 @@
 							{% endif %}
 						</div>
                     </fieldset>
+                    <!-- Stripe card element -->
                      <fieldset class="px-3">
-                        <legend class="fieldset-label px-2 w-auto">Payment</legend>
-                        <!-- A Stripe card element will go here -->
-                        <div class="mb-3 payment-border-box" id="card-element"></div>
+                        <legend class="fieldset-label smaller-subheading-font ml-1 mb-5 px-2 w-auto">Payment</legend>
+                        <h2 class="challenge-subheader mb-3">Please enter your card details</h2>
+                            <div class="mb-5 payment-border-box" id="card-element"></div>
 
                         <!-- Used to display form errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     </fieldset>
-
+                    <tr>
+                    <td>
+                    <a href="{% url 'cart' %}" class="cart" aria-label="View your shopping cart">
+            <h2 class="smaller-subheading-font ml-1 mt-3"><i class="fas fa-chevron-left" style="color:#FF9600"></i> Or go back to cart <i class="fas fa fa-shopping-cart" style="color:#FF9600"></i></h2>
+        </a></td><td class="text-right" colspan="5">
+                    
+                                    <button class="button is-primary mr-1" id="submit-button"><i class="fas fa-lock mr-3"></i> Secure Checkout with Stripe</button>
+                                
+                                </td></tr>
                     </form>
                                 </td>
-                            </tr>
-                            <tr>
-                            <td>
-                            <a href="{% url 'cart' %}" class="cart position-relative d-block" aria-label="View your shopping cart">
-            <h2 class="smaller-subheading-font"><i class="fas fa-chevron-left" style="color:#FF9600"></i> Or go back to cart <i class="fas fa fa-shopping-cart" style="color:#FF9600"></i></h2>
-        </a>
-                            </td>                           
-                                <td colspan="5" class="text-right">
-                                    <button class="button is-primary" id="submit-button"><i class="fas fa-lock"></i> Secure Checkout with Stripe</button></h2>
-                                </td>
-                            </tr>
+                            </tr>                                                 
+                                
+                            
                         </table>
                         <br>
                     </div>
