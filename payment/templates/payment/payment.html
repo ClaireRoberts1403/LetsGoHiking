@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% load static %}
+{% load cart_tools %}
+
+{% block content %}
+<section class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h2 class="smaller-heading-font">Ready to check out?</h2>                    
+            <h6 class="smaller-subheading-font text-center"><strong>Total:£ {{ grand_total|floatformat:2 }}</strong></h6>
+    </div>
+    <br>
+    <div class="container">
+        <a href="{% url 'cart' %}" class="cart position-relative d-inlineflex" aria-label="View your shopping cart">
+            <h2 class="smaller-subheading-font"><i class="fas fa-chevron-left" style="color:#FF9600"></i>Or go back your shopping cart <i class="fas fa fa-shopping-cart" style="color:#FF9600"></i></h2>
+        </a>
+    </div>
+	<br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                {% if cart_items %}
+                    <div class="table-responsive rounded">
+                        <table class="table table-striped">
+                            <thead class="text-black">
+                                <tr>
+                                    <th scope="col">Order Summary</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Subtotal</th>
+                                </tr>
+                            </thead>
+
+                            {% for item in cart_items %}
+                                <tr>
+                                    <td class="w-30">
+                                        {% if item.product.product_image %}
+                                        <img class="img-fluid" style="width:100px" src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}">
+                                        {% else %}
+                                        <img class="img-fluid" style="width:100px" src="{{ MEDIA_URL }}lost_image.png" alt="{{ item.product.name }}">
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <p><strong>{{ item.product.name }}</strong></p>
+                                    </td>
+                                    <td>
+                                        <p>£{{ item.product.product_price }}</p>
+                                    </td>  
+                                    <td>
+                                        <p data-item_id="{{ item.item_id }}"
+                                                        id="id_qty_{{ item.item_id }}">{{ item.quantity }}</p>
+                                    </td> 
+                                    <td class="py-3">
+                                        <p class="my-0">£ {{ item.product.product_price | calc_subtotal:item.quantity }}</p>
+                                    </td>                                       
+                                    
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="5" class="pt-5 text-right">
+                                    <h6>Delivery fee:£ {{ delivery|floatformat:2 }}</h6>
+                                    <h6><strong>Total:£ {{ grand_total|floatformat:2 }}</strong></h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-right">
+                                    <button class="button is-primary" id="buy_now_btn"><i class="fas fa-lock"></i> Secure Checkout with Stripe</button></h2>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

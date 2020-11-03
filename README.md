@@ -26,3 +26,4 @@ Guidence/Resourses from
 "Bootstrap toasts https://getbootstrap.com/docs/4.3/components/toasts/"
 "Payment app from Stripe https://testdriven.io/blog/django-stripe-tutorial/"
 "Payment app from https://www.youtube.com/watch?v=JwhEjEqG43M"
+"Payment process guided by Code Institute E commance tutorials"
