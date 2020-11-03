@@ -55,7 +55,7 @@
                                             </div>
                                         </form>
                                         <a class="update-link"><small>Update</small></a>
-                                        <a class="delete-item float-right" id="delete_{{ item.item_id }}"><small><i class="fas fa-trash-alt"></i> Delete</small></a>
+                                        <a class="delete-item float-right" id="delete_from_cart{{ item.item_id }}"><small><i class="fas fa-trash-alt"></i> Delete</small></a>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">£ {{ item.product.product_price | calc_subtotal:item.quantity }}</p>

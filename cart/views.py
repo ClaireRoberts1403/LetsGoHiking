@@ -54,7 +54,7 @@ def delete_from_cart(request, item_id):
         cart.pop(item_id)
         messages.success(request, f'Deleted {product.name} from your cart')
     else:
-        messages.info(request, f'Item not found to be deleted')
+        messages.success(request, f'Could not delete {product.name} from your cart')
 
     request.session['cart'] = cart
     return HttpResponse(status=200)
