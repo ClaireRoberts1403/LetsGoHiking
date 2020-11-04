@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import UserProfile
-from .forms import UserProfileForm
+from .models import UserProfile, SuggestChallenge
+from .forms import UserProfileForm, SuggestChallengeForm
 from challenges.models import challenge
-from challenges.forms import ChallengeForm
 from payment.models import Order
 
 
@@ -60,17 +59,17 @@ def edit_profile(request):
 
 
 @login_required
-def submit_idea(request):
+def suggest_challenge(request):
     if request.method == 'POST':
-        form = ChallengeForm(request.POST, request.FILES)
+        form = SuggestChallengeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect(reverse('profiles'))
     else:
-        form = ChallengeForm()
+        form = SuggestChallengeForm()
 
-    form = ChallengeForm()
-    template = 'profiles/submit_idea.html'
+    form = SuggestChallengeForm()
+    template = 'profiles/suggest_challenge.html'
     context = {
         'form': form,
     }
