@@ -29,7 +29,9 @@ def my_order_history(request):
 @login_required
 def my_challenges(request):
 
-    return render(request, 'profiles/my_challenges.html')
+    challenges = challenge.objects.all()
+
+    return render(request, 'profiles/my_challenges.html', {'challenges': challenges})
 
 
 @login_required
