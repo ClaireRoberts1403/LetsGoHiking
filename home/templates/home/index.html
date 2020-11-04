@@ -1,23 +1,18 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <div id="crossfade">
-  <img class="bottom" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/hero-image3.jpg" style= "width: 100%">
-  <img class="top" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/hero-image2.jpg" style= "width: 100%">
-	
+    <img class="bottom" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/hero-image3.jpg" style="width: 100%;" />
+    <img class="top" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/hero-image2.jpg" style="width: 100%;" />
 </div>
 <div class="jumbotron jumbotron-fluid mb-0">
-<!-- Hero Image for Home page -->
-	
-	<h1 class="display-4 hero-font">
-			Let's Go Hiking
-		</h1>
-        <br>
-		<h2 class="lead hero-subtitle">
-			Find your next challenge
-            <a class="btn btn-lg find-out-more-btn" href="{% url 'about' %}" role="button">Find out more</a>
-		</h2>	
-        
-        </div>
-		{% endblock %}
+    <!-- Hero Image for Home page -->
+
+    <h1 class="display-4 hero-font">
+        Let's Go Hiking
+    </h1>
+    <br />
+    <h2 class="lead hero-subtitle">
+        Find your next challenge
+        <a class="btn btn-lg find-out-more-btn" href="{% url 'about' %}" role="button">Find out more</a>
+    </h2>
+</div>
+{% endblock %}

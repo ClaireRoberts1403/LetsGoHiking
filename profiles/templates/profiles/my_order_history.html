@@ -1,49 +1,43 @@
-{% extends "base.html" %} {% load static %}
-
-{% block extra_title %} My order history{% endblock %}
-
-{% block content %}
-{% if request.user.is_authenticated %}
+{% extends "base.html" %} {% load static %} {% block extra_title %} My order history{% endblock %} {% block content %} {% if request.user.is_authenticated %}
 <!-- Sidenav -->
 <div class="sidenav">
-{% if Userprofile.user_image %}
-	<img class="card-img" src="{{ userprofile.user_image.url }}" alt="Profile Image" style="border-radius: 50%;">
-{% else %}
-	<img class="card-img" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/no_profile_image.png" alt="Avatar" style="border-radius: 50%;">
-{% endif %}
-	<a href="{% url 'profiles' %}">Your profile</a>
+    {% if Userprofile.user_image %}
+    <img class="card-img profile_image" src="{{ userprofile.user_image.url }}" alt="Profile Image" style="border-radius: 50%;" />
+    {% else %}
+    <img class="card-img profile_image" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/no_profile_image.png" alt="Avatar" style="border-radius: 50%;" />
+    {% endif %}
+    <a href="{% url 'profiles' %}">Your profile</a>
     <a href="{% url 'my_challenges' %}">Your challenges</a>
-	<a href="{% url 'my_order_history' %}">Your order history</a>
-    <a href="{% url 'suggest_challenge' %}">Submit a idea for a challenge</a>		
+    <a href="{% url 'my_order_history' %}">Your order history</a>
+    <a href="{% url 'suggest_challenge' %}">Suggest an idea for a challenge</a>
 </div>
-<div class="main" style="background-color: #E6E7E8;">
-<h1 class="display-4 heading-font">My order history</h1>
-<div>
-<div class="main">
-<div class="card">
-<h2> Order : </h2>
-{% for order in orders %}
-                                <tr>
-                                    <td>
-                                        <h1>
-                                        title="{{ order.order_number }}"
-                                            {{ order.order_number|truncatechars:6 }}
-                                        </h1>
-                                    </td>
-                                    <td>{{ order.date }}</td>
-                                    <td>
-                                        <ul class="list-unstyled">
-                                            {% for item in order.lineitems.all %}
-                                                <li class="small">
-                                                    {{ item.product.name }} x{{ item.quantity }}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </td>
-                                    <td>${{ order.grand_total }}</td>
-                                </tr>
+<div class="main" style="background-color: #e6e7e8;">
+    <h1 class="display-4 heading-font">My order history</h1>
+    <div>
+        <div class="main">
+            <div class="card">
+                {% for order in orders %}
+                <tr>
+                    <td>
+                        <h1>
+                            title="{{ order.order_number }}" {{ order.order_number|truncatechars:6 }}
+                        </h1>
+                    </td>
+                    <td>{{ order.date }}</td>
+                    <td>
+                        <ul class="list-unstyled">
+                            {% for item in order.lineitems.all %}
+                            <li class="small">
+                                {{ item.product.name }} x{{ item.quantity }}
+                            </li>
                             {% endfor %}
-  
+                        </ul>
+                    </td>
+                    <td>${{ order.grand_total }}</td>
+                </tr>
+                {% endfor %}
+            </div>
+            {% endif %} {% endblock %}
+        </div>
+    </div>
 </div>
-{% endif %}
-{% endblock %}

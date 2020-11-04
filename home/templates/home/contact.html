@@ -1,29 +1,28 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}    
+{% extends "base.html" %} {% load static %} {% block content %}
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4 heading-font">
             Contact Us
         </h1>
+        <h2 class="smaller-subheader-font mt-2">
+            Ask us a question? make a suggestion. Tell us what you think.
+        </h2>
     </div>
 </div>
-    <div class="container" style="color:white">
-        <div class="row">
-            <div class="col">
-                <form method="POST" action="{% url 'contact' %}" class="form" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <div class="text-right">
-                        <a class="btn my-btn-light" href="{% url 'home' %}">Cancel</a>
-                        <button class="button my-btn-dark" type="submit">Send Meassge</button>
-                    </div>
-                    <br>
-                </form>
-                <br>
-            </div>            
+<div class="container" style="color: white;">
+    <div class="row">
+        <div class="col">
+            <form method="POST" action="{% url 'contact' %}" class="form" enctype="multipart/form-data">
+                {% csrf_token %} {{ form | crispy }}
+                <div class="text-right">
+                    <a class="btn my-btn-light" href="{% url 'home' %}">Cancel</a>
+                    <button class="button my-btn-dark" type="submit">Send Meassge</button>
+                </div>
+                <br />
+            </form>
+            <br />
         </div>
     </div>
+</div>
 
 {% endblock %}

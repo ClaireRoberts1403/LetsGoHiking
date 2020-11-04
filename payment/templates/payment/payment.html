@@ -1,144 +1,127 @@
-{% extends "base.html" %} {% load static %}
-{% load cart_tools %}
-
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% load cart_tools %} {% block content %}
 <section class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h2 class="smaller-heading-font">Ready to check out?</h2>                    
-            
+        <h2 class="smaller-heading-font">Ready to check out?</h2>
     </div>
-    <br>
+    <br />
     <div class="container">
         <a href="{% url 'cart' %}" class="cart position-relative d-inline" aria-label="View your shopping cart">
-            <h2 class="smaller-subheading-font"><i class="fas fa-chevron-left" style="color:#FF9600"></i> Or go back to cart <i class="fas fa fa-shopping-cart" style="color:#FF9600"></i></h2>
+            <h2 class="smaller-subheading-font"><i class="fas fa-chevron-left" style="color: #ff9600;"></i> Or go back to cart <i class="fas fa fa-shopping-cart" style="color: #ff9600;"></i></h2>
         </a>
     </div>
-	<br>
+    <br />
     <div class="container-fluid">
         <div class="row">
             <div class="col">
                 {% if cart_items %}
-                    <div class="table-responsive rounded">
-                        <table class="table table-striped">
-                            <thead class="text-black">
-                                <tr>
-                                    <th scope="col">Order Summary</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Subtotal</th>
-                                </tr>
-                            </thead>
-
-                            {% for item in cart_items %}
-                                <tr>
-                                    <td class="w-30">
-                                        {% if item.product.product_image %}
-                                        <img class="img-fluid" style="width:100px" src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}">
-                                        {% else %}
-                                        <img class="img-fluid" style="width:100px" src="{{ MEDIA_URL }}lost_image.png" alt="{{ item.product.name }}">
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        <p><strong>{{ item.product.name }}</strong></p>
-                                    </td>
-                                    <td>
-                                        <p>£{{ item.product.price }}</p>
-                                    </td>  
-                                    <td>
-                                        <p data-item_id="{{ item.item_id }}"
-                                                        id="id_qty_{{ item.item_id }}">{{ item.quantity }}</p>
-                                    </td> 
-                                    <td class="py-3">
-                                        <p class="my-0">£ {{ item.product.price | calc_subtotal:item.quantity }}</p>
-                                    </td>                                       
-                                    
-                                </tr>
-                            {% endfor %}
+                <div class="table-responsive rounded">
+                    <table class="table table-striped">
+                        <thead class="text-black">
                             <tr>
-                                <td colspan="5" class="pt-5 text-right">
-                                    <h6>Delivery fee:£ {{ delivery|floatformat:2 }}</h6>
-                                    <br>
-                                    <h6 class="smaller-subheading-font text-right"><strong>Total:£ {{ grand_total|floatformat:2 }}</strong></h6>
-                                </td>
+                                <th scope="col">Order Summary</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Subtotal</th>
                             </tr>
-                            <tr>
-                                <td colspan="5" class="pt-5">
-                                    <h3 class="smaller-subheading-font">Please fill out the form below to complete your order</h3>
-                <!-- Form guided by Code Insitute Tutorial -->
-                <form action="{% url 'payment' %}" method="POST" id="payment-form">
-                    {% csrf_token %}
-                    <fieldset class="rounded px-3 mt-5 mb-5">
-                        <legend class="fieldset-label small text-black px-2 w-auto"></legend>
-                        {{ order_form.full_name | as_crispy_field }}
-                        {{ order_form.email | as_crispy_field }}
-                    </fieldset>
-                    <fieldset class="rounded px-3 mb-5">
-                        <legend class="fieldset-label smaller-subheading-font ml-1 mb-5 px-2 w-auto">Delivery</legend>
-                        {{ order_form.street_address1 | as_crispy_field }}
-                        {{ order_form.street_address2 | as_crispy_field }}
-                        {{ order_form.town_or_city | as_crispy_field }}
-                        {{ order_form.county | as_crispy_field }}
-                        {{ order_form.postcode | as_crispy_field }}
-                        {{ order_form.country | as_crispy_field }}
-                        <div class="form-check form-check-inline float-right mr-0">
-							{% if user.is_authenticated %}
-								<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                                <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
-							{% else %}
-								<label class="form-check-label" for="id-save-info">
-                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
-                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-                                </label>
-							{% endif %}
-						</div>
-                    </fieldset>
-                    <!-- Stripe card element -->
-                     <fieldset class="px-3">
-                        <legend class="fieldset-label smaller-subheading-font ml-1 mb-5 px-2 w-auto">Payment</legend>
-                        <h2 class="challenge-subheader mb-3">Please enter your card details</h2>
-                            <div class="mb-5 payment-border-box" id="card-element"></div>
-                        <!-- Used to display form errors -->
-                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                        <!-- Pass the client secret to the view so we can get the payment intent id -->
-                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                    </fieldset>
-                    <tr>
-                    <td>
-                    <a href="{% url 'cart' %}" class="cart" aria-label="View your shopping cart">
-            <h2 class="smaller-subheading-font ml-1 mt-3"><i class="fas fa-chevron-left" style="color:#FF9600"></i> Or go back to cart <i class="fas fa fa-shopping-cart" style="color:#FF9600"></i></h2>
-        </a></td><td class="text-right" colspan="5">
-                    
-                                    <button class="button is-primary mr-1" id="submit-button"><i class="fas fa-lock mr-3"></i> Secure Checkout with Stripe</button>
-                                
-                                </td></tr>
-                    </form>
-                                </td>
-                            </tr>                                                 
-                                
-                            
-                        </table>
-                        <br>
-                    </div>
+                        </thead>
+
+                        {% for item in cart_items %}
+                        <tr>
+                            <td class="w-30">
+                                {% if item.product.product_image %}
+                                <img class="img-fluid" style="width: 100px;" src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}" />
+                                {% else %}
+                                <img class="img-fluid" style="width: 100px;" src="{{ MEDIA_URL }}lost_image.png" alt="{{ item.product.name }}" />
+                                {% endif %}
+                            </td>
+                            <td>
+                                <p><strong>{{ item.product.name }}</strong></p>
+                            </td>
+                            <td>
+                                <p>£{{ item.product.price }}</p>
+                            </td>
+                            <td>
+                                <p data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">{{ item.quantity }}</p>
+                            </td>
+                            <td class="py-3">
+                                <p class="my-0">£ {{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="5" class="pt-5 text-right">
+                                <h6>Delivery fee:£ {{ delivery|floatformat:2 }}</h6>
+                                <br />
+                                <h6 class="smaller-subheading-font text-right"><strong>Total:£ {{ grand_total|floatformat:2 }}</strong></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="pt-5">
+                                <h3 class="smaller-subheading-font">Please fill out the form below to complete your order</h3>
+                                <!-- Form guided by Code Insitute Tutorial -->
+                                <form action="{% url 'payment' %}" method="POST" id="payment-form">
+                                    {% csrf_token %}
+                                    <fieldset class="rounded px-3 mt-5 mb-5">
+                                        <legend class="fieldset-label small text-black px-2 w-auto"></legend>
+                                        {{ order_form.full_name | as_crispy_field }} {{ order_form.email | as_crispy_field }}
+                                    </fieldset>
+                                    <fieldset class="rounded px-3 mb-5">
+                                        <legend class="fieldset-label smaller-subheading-font ml-1 mb-5 px-2 w-auto">Delivery</legend>
+                                        {{ order_form.street_address1 | as_crispy_field }} {{ order_form.street_address2 | as_crispy_field }} {{ order_form.town_or_city | as_crispy_field }} {{ order_form.county | as_crispy_field }} {{
+                                        order_form.postcode | as_crispy_field }} {{ order_form.country | as_crispy_field }}
+                                        <div class="form-check form-check-inline float-right mr-0">
+                                            {% if user.is_authenticated %}
+                                            <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked />
+                                            {% else %}
+                                            <label class="form-check-label" for="id-save-info">
+                                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                            </label>
+                                            {% endif %}
+                                        </div>
+                                    </fieldset>
+                                    <!-- Stripe card element -->
+                                    <fieldset class="px-3">
+                                        <legend class="fieldset-label smaller-subheading-font ml-1 mb-5 px-2 w-auto">Payment</legend>
+                                        <h2 class="challenge-subheader mb-3">Please enter your card details</h2>
+                                        <div class="mb-5 payment-border-box" id="card-element"></div>
+                                        <!-- Used to display form errors -->
+                                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                                        <!-- Pass the client secret to the view so we can get the payment intent id -->
+                                        <input type="hidden" value="{{ client_secret }}" name="client_secret" />
+                                    </fieldset>
+                                    <tr>
+                                        <td>
+                                            <a href="{% url 'cart' %}" class="cart" aria-label="View your shopping cart">
+                                                <h2 class="smaller-subheading-font ml-1 mt-3">
+                                                    <i class="fas fa-chevron-left" style="color: #ff9600;"></i> Or go back to cart <i class="fas fa fa-shopping-cart" style="color: #ff9600;"></i>
+                                                </h2>
+                                            </a>
+                                        </td>
+                                        <td class="text-right" colspan="5">
+                                            <button class="button is-primary mr-1" id="submit-button"><i class="fas fa-lock mr-3"></i> Secure Checkout with Stripe</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                </div>
                 {% endif %}
             </div>
         </div>
     </div>
 </section>
 <div id="loading-overlay">
-        <h1 class="text-light logo-font loading-spinner">
-            <span class="icon">
-                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-            </span>
-        </h1>
-    </div>
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+        </span>
+    </h1>
+</div>
 
-{% endblock %}
-
-{% block postloadjs %}
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'payment/js/stripe_elements.js' %}"></script>
+{% endblock %} {% block postloadjs %} {{ block.super }} {{ stripe_public_key|json_script:"id_stripe_public_key" }} {{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'payment/js/stripe_elements.js' %}"></script>
 {% endblock %}

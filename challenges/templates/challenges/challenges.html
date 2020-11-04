@@ -1,102 +1,96 @@
-{% extends "base.html" %} {% load static %}
-
-{% block extra_title %} Challenges {% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block extra_title %} Challenges {% endblock %} {% block content %}
 <!-- Challenges Header and quote -->
 <div class="jumbotron jumbotron-fluid">
-	<div class="container">
-		<h1 class="display-4 heading-font">
-			Challenges
-		</h1>
-		<h2 class="lead">
-			"It's not the mountain we conquer, but ourselves." - Sir Edmund Hillary
-		</h2>
-	</div>
+    <div class="container">
+        <h1 class="display-4 heading-font">
+            Challenges
+        </h1>
+        <h2 class="lead">
+            "It's not the mountain we conquer, but ourselves." - Sir Edmund Hillary
+        </h2>
+    </div>
 </div>
 
 <div class="container-fluid">
-	<div class="row">
-		<div class="col">
-			{% for challenge in challenges %}
-			<div class="table-responsive rounded">
-				<table class="table table-striped">
-
-					<thead>
-						<tr>
-							<td class="p-4 w-25">
-								{% if challenge.challenge_image %}
-								<img class="card-img" src="{{ challenge.challenge_image.url }}" alt="{{ challenge.name }}">
-                            {% else %}
-								<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
-						{% endif %}
-                                    </td>
-							<td>
-								<p class="challenge-header">{{ challenge.name }}</p>
-								<p class="challenge-subheader">{{ challenge.challenge_description }}</p>
-								<br>
-								<p><i class="far fa-grin-beam-sweat mr-2"></i> Difficulty: {{ challenge.challenge_difficulty_rating }}</p>
-
-							</td>
-							<td>
-								<p class="text-nowrap py-4" style="color:white">------------------------------------</p> <!-- Hack job to stop challenge discription to overflowing and altering button set up-->
-								<p class="py-4"><i class="fas fa-route mr-2"></i> Distance: {{ challenge.challenge_distance }} KM</p>
-								<p class="py-4"><i class="fas fa-mountain mr-2"></i> Ascent: {{ challenge.challenge_ascent }} M</p>
-								<p class="text-nowrap py-4"><i class="far fa-clock mr-2"></i> Estimated time: {{ challenge.challenge_estimate_time }} Hours</p>
-                                <br>   
-							</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="py-4">
-								<p class="my-0"><i class="fas fa-map-marked-alt ml-2 mr-2"></i> Location: {{ challenge.challenge_location }}</p>
-							</td>
-							<td class="py-4">
-								<p class="challenge-subheader">For purchasing this challenge pack you'll revieve a
-									{{ challenge.challenge_award_name }} and access to the full route information</p>
-                                    <br>
-                                    
-							</td>
-							<td class="py-4">
-								{% if challenge.challenge_image %}
-								<img class="card-img award_image" src="{{ challenge.challenge_award_image.url }}" alt="{{ challenge.name }}">
+    <div class="row">
+        <div class="col">
+            {% for challenge in challenges %}
+            <div class="table-responsive rounded">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td class="p-4 w-25">
+                                {% if challenge.challenge_image %}
+                                <img class="card-img" src="{{ challenge.challenge_image.url }}" alt="{{ challenge.name }}" />
                                 {% else %}
-								<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
-								{% endif %}
-						    </td>
-						</tr>
-						<tr>
+                                <img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}" />
+                                {% endif %}
+                            </td>
+                            <td>
+                                <p class="challenge-header">{{ challenge.name }}</p>
+                                <p class="challenge-subheader">{{ challenge.challenge_description }}</p>
+                                <br />
+                                <p><i class="far fa-grin-beam-sweat mr-2"></i> Difficulty: {{ challenge.challenge_difficulty_rating }}</p>
+                            </td>
+                            <td>
+                                <p class="text-nowrap py-4" style="color: white;">------------------------------------</p>
+                                <!-- Hack job to stop challenge discription to overflowing and altering button set up-->
+                                <p class="py-4"><i class="fas fa-route mr-2"></i> Distance: {{ challenge.challenge_distance }} KM</p>
+                                <p class="py-4"><i class="fas fa-mountain mr-2"></i> Ascent: {{ challenge.challenge_ascent }} M</p>
+                                <p class="text-nowrap py-4"><i class="far fa-clock mr-2"></i> Estimated time: {{ challenge.challenge_estimate_time }} Hours</p>
+                                <br />
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-4">
+                                <p class="my-0"><i class="fas fa-map-marked-alt ml-2 mr-2"></i> Location: {{ challenge.challenge_location }}</p>
+                            </td>
+                            <td class="py-4">
+                                <p class="challenge-subheader">For purchasing this challenge pack you'll revieve a {{ challenge.challenge_award_name }} and access to the full route information</p>
+                                <br />
+                            </td>
+                            <td class="py-4">
+                                {% if challenge.challenge_image %}
+                                <img class="card-img award_image" src="{{ challenge.challenge_award_image.url }}" alt="{{ challenge.name }}" />
+                                {% else %}
+                                <img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}" />
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="py-4"></td>
                             <td class="py-4"><p class="challenge-subheader text-center mt-5">Price: £ {{ challenge.challenge_price }}</p></td>
-							<td class="py-4">
-								<form class="form" action="{% url 'add_to_cart' challenge.id %}" method="POST">
-									{% csrf_token %}
-									<div class="form-row">
-										<div class="col-12">
-											<div class="form-group">
-												<div class="input-group">
-													<p class="mt-3">
-														<strong> Quantity:</strong>
-														<input class="form-control qty_input" type="number" name="quantity"
-                                                    value="1" min="1" max="99" data-item_id="{{ challenge.id }}" id="id_qty_{{ challenge.id }}"/></p>
-														<div class="form-row ml-5">
-															<input type="submit" class="btn my-btn-dark" value="Add to Cart"/></div>
-														</div>
-													<input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                                 </div>
-											</div>
-										</div>
-								    </form>
-							    </td>
-						    </tr>
-                        </tbody>
-					{% endfor %}
-				</table>
-                <br>
-			</div>
-		</div>
-	</div>
+                            <td class="py-4">
+                                <form class="form" action="{% url 'add_to_cart' challenge.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <p class="mt-3">
+                                                        <strong> Quantity:</strong>
+                                                        <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ challenge.id }}" id="id_qty_{{ challenge.id }}" />
+                                                    </p>
+                                                    <div class="form-row ml-5">
+                                                        <input type="submit" class="btn my-btn-dark" value="Add to Cart" />
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="redirect_url" value="{{ request.path }}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+                <br />
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

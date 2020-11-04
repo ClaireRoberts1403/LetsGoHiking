@@ -1,40 +1,35 @@
-{% extends "base.html" %}
-{% load static %}
- 
-{% block extra_title %} Profile {% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block extra_title %} Profile {% endblock %} {% block content %}
 <!-- Sidenav -->
 {% if request.user.is_authenticated %}
 <div class="sidenav">
-{% if Userprofile.user_image %}
-	<img class="card-img" src="{{ userprofile.user_image.url }}" alt="Profile Image" style="border-radius: 50%;">
-{% else %}
-	<img class="card-img" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/no_profile_image.png" alt="Avatar" style="border-radius: 50%;">
-{% endif %}
-	<a href="{% url 'profiles' %}">Your profile</a>
-	<a href="{% url 'my_challenges' %}">Your challenges</a>
-	<a href="{% url 'my_order_history' %}">Your order history</a>
-	<a href="{% url 'suggest_challenge' %}">Submit a idea for a challenge</a>
-</div>
-<div class="main" style="background-color: #E6E7E8;">
-	<h1 class="display-4 heading-font">Submit a idea for a challenge</h1>
-	<div>
-    <div class="container" style="color:black">
-        <div class="row">
-            <div class="col">
-                <form method="POST" action="{% url 'suggest_challenge' %}" class="form" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <div class="text-right">
-                        <a class="btn my-btn-light" href="{% url 'profiles' %}">Cancel</a>
-                        <button class="button my-btn-dark" type="submit">Submit Challenge</button>
-                    </div>
-                    <br>
-                </form>
-                <br>
-            </div>            
-        </div>
-    </div>
+    {% if Userprofile.user_image %}
+    <img class="card-img profile_image" src="{{ userprofile.user_image.url }}" alt="Profile Image" style="border-radius: 50%;" />
+    {% else %}
+    <img class="card-img profile_image" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/no_profile_image.png" alt="Avatar" style="border-radius: 50%;" />
     {% endif %}
-{% endblock %}
+    <a href="{% url 'profiles' %}">Your profile</a>
+    <a href="{% url 'my_challenges' %}">Your challenges</a>
+    <a href="{% url 'my_order_history' %}">Your order history</a>
+    <a href="{% url 'suggest_challenge' %}">Suggest an idea for a challenge</a>
+</div>
+<div class="main" style="background-color: #e6e7e8;">
+    <h1 class="display-4 heading-font">Suggest an idea for a challenge</h1>
+    <div>
+        <div class="container" style="color: black;">
+            <div class="row">
+                <div class="col">
+                    <form method="POST" action="{% url 'suggest_challenge' %}" class="form" enctype="multipart/form-data">
+                        {% csrf_token %} {{ form | crispy }}
+                        <div class="text-right">
+                            <a class="btn my-btn-light" href="{% url 'profiles' %}">Cancel</a>
+                            <button class="button my-btn-dark" type="submit">Submit Challenge Suggestion</button>
+                        </div>
+                        <br />
+                    </form>
+                    <br />
+                </div>
+            </div>
+        </div>
+        {% endif %} {% endblock %}
+    </div>
+</div>

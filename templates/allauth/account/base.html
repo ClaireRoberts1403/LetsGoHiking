@@ -114,8 +114,8 @@
         <hr class="my-4 my_hr">
       <ul class="profile_list">
         {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        <li><a href="{% url 'account_email' %}"></a></li>
+        <li><a href="{% url 'account_logout' %}"></a></li>
         {% else %}
         <li><a href="{% url 'account_login' %}"></a></li>
         <li><a href="{% url 'account_signup' %}"></a></li>

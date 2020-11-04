@@ -1,101 +1,94 @@
-{% extends "base.html" %} {% load static %}
-
-{% block extra_title %} Challenges {% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block extra_title %} Challenges {% endblock %} {% block content %}
 <!-- Challenges Header and quote -->
 {% for challenge in challenges %}
 <div class="jumbotron jumbotron-fluid">
-	<div class="container">
-		<h1 class="display-4 heading-font">
-			{{ challenge.name }} Challenge
-		</h1>
-		<h2 class="lead">
-			"The mountains are calling and I must go." - John Muir
-		</h2>
-	</div>
+    <div class="container">
+        <h1 class="display-4 heading-font">
+            {{ challenge.name }} Challenge
+        </h1>
+        <h2 class="lead">
+            "The mountains are calling and I must go." - John Muir
+        </h2>
+    </div>
 </div>
 
 <div class="container-fluid">
-	<div class="row">
-		<div class="col">
-			<div class="table-responsive rounded">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<td class="p-4 w-25">
-								{% if challenge.challenge_image %}
-								<img class="card-img" src="{{ challenge.challenge_image.url }}" alt="{{ challenge.name }}">
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive rounded">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td class="p-4 w-25">
+                                {% if challenge.challenge_image %}
+                                <img class="card-img" src="{{ challenge.challenge_image.url }}" alt="{{ challenge.name }}" />
                                 {% else %}
-								<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
-						        {% endif %}
+                                <img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}" />
+                                {% endif %}
                             </td>
-							<td>
-								<p class="challenge-header">{{ challenge.name }}</p>
-								<p class="challenge-subheader">{{ challenge.challenge_description }}</p>
-								<br>
-								<p class="challenge-subheader"><i class="far fa-grin-beam-sweat mr-2"></i> Difficulty: {{ challenge.challenge_difficulty_rating }}</p>
-
-							</td>
-							<td>
-								<p class="text-nowrap py-4" style="color:white">------------------------------------</p>
-								<!-- Hack job to stop challenge discription to overflowing and altering button set up-->
-								<p class="challenge-subheader py-4"><i class="fas fa-route mr-2"></i> Distance: {{ challenge.challenge_distance }} KM</p>
-								<p class="challenge-subheader py-4"><i class="fas fa-mountain mr-2"></i> Ascent: {{ challenge.challenge_ascent }} M</p>
-								<p class="challenge-subheader text-nowrap py-4"><i class="far fa-clock mr-2"></i> Estimated time: {{ challenge.challenge_estimate_time }}
-									Hours</p>
-								<br>
-							</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="py-4">
-								<p class="challenge-subheader"><i class="fas fa-map-marked-alt ml-2 mr-2"></i> Location: {{ challenge.challenge_location }}</p>
-							</td>
-							<td class="py-4">
-								<p class="challenge-subheader"><i class="fas fa-map-marker-alt mr-2"></i> Startpoint: {{ challenge.challenge_start_point }}</p>
-							</td>
-							<td class="py-4">
-								<p class="challenge-subheader"><i class="fas fa-car mr-2"></i> Carpark: {{ challenge.challenge_carpark }}</p>
-							</td>
-						</tr>
-						<tr>
-							<td class="py-4 challenge-subheader"><i class="far fa-map mr-2"></i> Recommended Map: {{ challenge.recommended_map }}</td>
-							<td class="py-4">
-								<p class="challenge-subheader"><i class="fas fa-award mr-2"></i> For purchasing this challenge pack you'll revieve a
-									{{ challenge.challenge_award_name }}</p>
-								<br>
-							</td>
-							<td class="py-4">
-								{% if challenge.challenge_image %}
-								<img class="card-img award_image" src="{{ challenge.challenge_award_image.url }}" alt="{{ challenge.name }}">
+                            <td>
+                                <p class="challenge-header">{{ challenge.name }}</p>
+                                <p class="challenge-subheader">{{ challenge.challenge_description }}</p>
+                                <br />
+                                <p class="challenge-subheader"><i class="far fa-grin-beam-sweat mr-2"></i> Difficulty: {{ challenge.challenge_difficulty_rating }}</p>
+                            </td>
+                            <td>
+                                <p class="text-nowrap py-4" style="color: white;">------------------------------------</p>
+                                <!-- Hack job to stop challenge discription to overflowing and altering button set up-->
+                                <p class="challenge-subheader py-4"><i class="fas fa-route mr-2"></i> Distance: {{ challenge.challenge_distance }} KM</p>
+                                <p class="challenge-subheader py-4"><i class="fas fa-mountain mr-2"></i> Ascent: {{ challenge.challenge_ascent }} M</p>
+                                <p class="challenge-subheader text-nowrap py-4"><i class="far fa-clock mr-2"></i> Estimated time: {{ challenge.challenge_estimate_time }} Hours</p>
+                                <br />
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-4">
+                                <p class="challenge-subheader"><i class="fas fa-map-marked-alt ml-2 mr-2"></i> Location: {{ challenge.challenge_location }}</p>
+                            </td>
+                            <td class="py-4">
+                                <p class="challenge-subheader"><i class="fas fa-map-marker-alt mr-2"></i> Startpoint: {{ challenge.challenge_start_point }}</p>
+                            </td>
+                            <td class="py-4">
+                                <p class="challenge-subheader"><i class="fas fa-car mr-2"></i> Carpark: {{ challenge.challenge_carpark }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 challenge-subheader"><i class="far fa-map mr-2"></i> Recommended Map: {{ challenge.recommended_map }}</td>
+                            <td class="py-4">
+                                <p class="challenge-subheader"><i class="fas fa-award mr-2"></i> For purchasing this challenge pack you'll revieve a {{ challenge.challenge_award_name }}</p>
+                                <br />
+                            </td>
+                            <td class="py-4">
+                                {% if challenge.challenge_image %}
+                                <img class="card-img award_image" src="{{ challenge.challenge_award_image.url }}" alt="{{ challenge.name }}" />
                                 {% else %}
-								<img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
-								{% endif %}
-						    </td>
-						</tr>
-					</tbody>
+                                <img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}" />
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
-		</div>
+        </div>
     </div>
-<br>
-<div class="row">
-    <div class="container">
-        <h2 class="challenge-header" style="margin-left:5%">Route</h2>
+    <br />
+    <div class="row">
+        <div class="container">
+            <h2 class="challenge-header" style="margin-left: 5%;">Route</h2>
+        </div>
     </div>
-</div>
-<br>
-    <div style="color:white">
+    <br />
+    <div style="color: white;">
         <div class="row">
             <div class="container">
-            <h3 class="challenge-subheader">Your challenge begins here...</h3>
-            <br>
+                <h3 class="challenge-subheader">Your challenge begins here...</h3>
+                <br />
                 <p><i class="fas fa-map-signs"></i> {{ challenge.Route_Step_1}}</p>
             </div>
         </div>
-        <br>
+        <br />
         <div class="row">
             {% if challenge.Route_Step_2 %}
             <div class="container">
@@ -105,7 +98,7 @@
             <div></div>
             {% endif %}
         </div>
-        <br>
+        <br />
         <div class="row">
             {% if challenge.Route_Step_3 %}
             <div class="container">
@@ -115,7 +108,7 @@
             <div></div>
             {% endif %}
         </div>
-        <br>
+        <br />
         <div class="row">
             {% if challenge.Route_Step_4 %}
             <div class="container">
@@ -125,7 +118,7 @@
             <div></div>
             {% endif %}
         </div>
-        <br>
+        <br />
         <div class="row">
             {% if challenge.Route_Step_5 %}
             <div class="container">
@@ -135,7 +128,7 @@
             <div></div>
             {% endif %}
         </div>
-        <br>
+        <br />
         <div class="row">
             {% if challenge.Route_Step_6 %}
             <div class="container">
@@ -145,7 +138,7 @@
             <div></div>
             {% endif %}
         </div>
-        <br>
+        <br />
         <div class="row">
             {% if challenge.Route_Step_7 %}
             <div class="container">
@@ -155,7 +148,7 @@
             <div></div>
             {% endif %}
         </div>
-        <br>
+        <br />
         <div class="row">
             {% if challenge.Route_Step_8 %}
             <div class="container">
@@ -167,12 +160,11 @@
         </div>
         <div class="container">
             {% if challenge.map_image %}
-            <img class="card-img w-50" src="{{ challenge.map_image.url }}" alt="{{ challenge.name }}">
+            <img class="card-img w-50" src="{{ challenge.map_image.url }}" alt="{{ challenge.name }}" />
             {% else %}
-            <img class="card-img w-50" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}">
+            <img class="card-img w-50" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}" />
             {% endif %}
         </div>
-	</div>
+    </div>
 </div>
-{% endfor %}
-{% endblock %}
+{% endfor %} {% endblock %}

@@ -1,164 +1,137 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+    <head>
+        {% block meta %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/favicon-16x16.png" />
+        {% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/90ed803b97.js" crossorigin="anonymous"></script>
+        <script src="https://js.stripe.com/v3/"></script>
 
-<head>
-	{% block meta %}
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	{% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
-	<link rel="stylesheet" href="{% static 'css/base.css' %}" />
-	<link rel="apple-touch-icon" sizes="180x180" href="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/apple-touch-icon.png" />
-	<link rel="icon" type="image/png" sizes="32x32" href="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/favicon-32x32.png" />
-	<link rel="icon" type="image/png" sizes="16x16" href="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/favicon-16x16.png" />
-	{% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-	</script>
-	<script src="https://kit.fontawesome.com/90ed803b97.js" crossorigin="anonymous"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-	
-	{% endblock %} {% block extra_js %} {% endblock %}
+        {% endblock %} {% block extra_js %} {% endblock %}
 
-	<title>Let's Go Hiking! {% block extra_title %}{% endblock %}</title>
-</head>
+        <title>Let's Go Hiking! {% block extra_title %}{% endblock %}</title>
+    </head>
 
-<body>
-	<nav class="navbar navbar-expand-lg navbar-light">
-		<a class="navbar-brand header-title" href="{% url 'home' %}">
-			<img class="d-none d-md-inline d-lg-inline d-xl-inline" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/HEADERLOGO.png" height="100" width="100" alt="Site Logo" />Let's Go Hiking </a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand header-title" href="{% url 'home' %}">
+                <img class="d-none d-md-inline d-lg-inline d-xl-inline" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/HEADERLOGO.png" height="100" width="100" alt="Site Logo" />Let's Go Hiking
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'home' %}">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'challenges' %}">Challenges</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="{% url 'shop' %}" id="navbarDropdown" role="button"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Shop
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="{% url 'shop' %}?category=patches">Patches</a>
-							<a class="dropdown-item" href="{% url 'shop' %}?category=stickers">Stickers</a>
-							<a class="dropdown-item" href="{% url 'shop' %}?category=hats">Hats</a>
-							<a class="dropdown-item" href="{% url 'shop' %}?category=waterBottles">Water Bottles</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="{% url 'shop' %}">Shop Everything</a>
-						</div>
-					</li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'challenges' %}">Challenges</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'shop' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Shop
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'shop' %}?category=patches">Patches</a>
+                            <a class="dropdown-item" href="{% url 'shop' %}?category=stickers">Stickers</a>
+                            <a class="dropdown-item" href="{% url 'shop' %}?category=hats">Hats</a>
+                            <a class="dropdown-item" href="{% url 'shop' %}?category=waterBottles">Water Bottles</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'shop' %}">Shop Everything</a>
+                        </div>
+                    </li>
                     <!-- code for shopping cart icon with counter from solodev.com - see read me for full link -->
-					<li class="nav-item px-3 text-uppercase mb-0 position-relative d-lg-flex">
-						<div id="cart" class="d-none"></div>
-						<a href="{% url 'cart' %}" class="cart position-relative d-inline-flex"
-							aria-label="View your shopping cart">
-							<i class="fas fa fa-shopping-cart"></i>
-							<!-- show item count in cart -->
-							{% if grand_total %}
-							<span class="cart-basket d-flex align-items-center justify-content-center">{{ product_count|floatformat:0 }}</span>
-							{% else %}
-							<span class="cart-basket d-flex align-items-center justify-content-center"> 0 </span>
-							{% endif %}
-						</a>
-					</li>
-                        {% if request.user.is_authenticated %}
-                            <div display="none">
+                    <li class="nav-item px-3 text-uppercase mb-0 position-relative d-lg-flex">
+                        <div id="cart" class="d-none"></div>
+                        <a href="{% url 'cart' %}" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+                            <i class="fas fa fa-shopping-cart"></i>
+                            <!-- show item count in cart -->
+                            {% if grand_total %}
+                            <span class="cart-basket d-flex align-items-center justify-content-center">{{ product_count|floatformat:0 }}</span>
                             {% else %}
-                                <div class="text-right"><div class="dropdown-divider"></div>
-                                    <a href="{% url 'account_signup' %}" class="d-sm-none button btn my-btn-light"><strong>Sign Up</strong></a>
-                                    <br>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="{% url 'account_login' %}" class="d-sm-none button btn my-btn-dark"><strong>Log In</strong></a>
-                                </div>
-                            </div>
+                            <span class="cart-basket d-flex align-items-center justify-content-center"> 0 </span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <div display="none">
+                        {% else %}
+                        <div class="text-right">
+                            <div class="dropdown-divider"></div>
+                            <a href="{% url 'account_signup' %}" class="d-sm-none button btn my-btn-light"><strong>Sign Up</strong></a>
+                            <br />
+                            <div class="dropdown-divider"></div>
+                            <a href="{% url 'account_login' %}" class="d-sm-none button btn my-btn-dark"><strong>Log In</strong></a>
+                        </div>
+                    </div>
                     {% endif %}
-					<li class="nav-item dropdown">
-						{% if request.user.is_authenticated %}
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                My Account
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="User Account">
-                                <a class="dropdown-item" href="{% url 'profiles' %}">My Profile</a>
-                                <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                    <li class="nav-item dropdown">
+                        {% if request.user.is_authenticated %}
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            My Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="User Account">
+                            <a class="dropdown-item" href="{% url 'profiles' %}">My Profile</a>
+                            <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                            {% endif %}
+                            <div class="dropdown-divider"></div>
+                            {% if request.user.is_superuser %}
+                            <a class="dropdown-item" href="{% url 'add_challenge' %}">Challenges Management</a>
+                            <a class="dropdown-item" href="{% url 'add_product' %}">Products Management</a>
+                        </div>
                         {% endif %}
-                                <div class="dropdown-divider"></div>
-                        {% if request.user.is_superuser %}
-                                <a class="dropdown-item" href="{% url 'add_challenge' %}">Challenges Management</a>
-                                <a class="dropdown-item" href="{% url 'add_product' %}">Products Management</a>
-                            </div>
-						{% endif %}
-					</li>
-				</ul>
-			</div>
-			{% if request.user.is_authenticated %}
-			<div class="buttons" display="none">
-				{% else %}
-				<div class="buttons">
-					<a href="{% url 'account_signup' %}" class="d-none d-sm-inline button btn my-btn-light" type="button">Sign Up</a>
-					<a href="{% url 'account_login' %}" class="d-none d-sm-inline button btn my-btn-dark" type="button">Log In</a>
-				</div>
-			</div>
-			{% endif %}
-	</nav>
+                    </li>
+                </ul>
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="buttons" display="none">
+                {% else %}
+                <div class="buttons">
+                    <a href="{% url 'account_signup' %}" class="d-none d-sm-inline button btn my-btn-light" type="button">Sign Up</a>
+                    <a href="{% url 'account_login' %}" class="d-none d-sm-inline button btn my-btn-dark" type="button">Log In</a>
+                </div>
+            </div>
+            {% endif %}
+        </nav>
 
-	{% if messages %}
-	<div class="message-container">
-		{% for message in messages %}
-		{% with message.level as level %}
-		{% if level == 40 %}
-		{% include 'toasts/toast_error.html' %}
-		{% elif level == 30 %}
-		{% include 'toasts/toast_warning.html' %}
-		{% elif level == 25 %}
-		{% include 'toasts/toast_success.html' %}
-		{% else %}
-		{% include 'toasts/toast_info.html' %}
-		{% endif %}
-		{% endwith %}
-		{% endfor %}
-
-	</div>
-	{% endif %}
-	{% block page_header %} {% endblock %}
-	{% block content %} {% endblock %}
-	{% block page_footer %} {% endblock %}
-	<footer class="my_footer fixed-bottom">
-		<div class="container">
-			<ul class="social_networks">
-				<li><a class="footer_links" href="{% url 'about' %}">About Us</a></li>
-				<li><a class="footer_links" href="{% url 'contact' %}">Contact Us</a></li>
-				<li>
-					<a href="http://www.instagram.com" target="_blank"
-						rel="noopener"><i class="fab fa-instagram"></i></a>
-				</li>
-				<li>
-					<a href="http://www.pinterest.com" target="_blank"
-						rel="noopener"><i class="fab fa-pinterest-square"></i></a>
-				</li>
-			</ul>
-		</div>
-	</footer>
-	{% block postloadjs %}
-	<script type="text/javascript">
-		$('.toast').toast('show');
-	</script>
-	{% endblock %}
-</body>
-
+        {% if messages %}
+        <div class="message-container">
+            {% for message in messages %} {% with message.level as level %} {% if level == 40 %} {% include 'toasts/toast_error.html' %} {% elif level == 30 %} {% include 'toasts/toast_warning.html' %} {% elif level == 25 %} {% include
+            'toasts/toast_success.html' %} {% else %} {% include 'toasts/toast_info.html' %} {% endif %} {% endwith %} {% endfor %}
+        </div>
+        {% endif %} {% block page_header %} {% endblock %} {% block content %} {% endblock %} {% block page_footer %} {% endblock %}
+        <footer class="my_footer fixed-bottom">
+            <div class="container">
+                <ul class="social_networks">
+                    <li><a class="footer_links" href="{% url 'about' %}">About Us</a></li>
+                    <li><a class="footer_links" href="{% url 'contact' %}">Contact Us</a></li>
+                    <li>
+                        <a href="http://www.instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://www.pinterest.com" target="_blank" rel="noopener"><i class="fab fa-pinterest-square"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+        {% block postloadjs %}
+        <script type="text/javascript">
+            $(".toast").toast("show");
+        </script>
+        {% endblock %}
+    </body>
 </html>

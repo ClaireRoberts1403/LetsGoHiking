@@ -1,56 +1,44 @@
-{% extends "base.html" %} {% load static %}
-
-{% block extra_title %} Profile {% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block extra_title %} Profile {% endblock %} {% block content %}
 <!-- Sidenav -->
 {% if request.user.is_authenticated %}
 <div class="sidenav">
-{% if Userprofile.user_image %}
-	<img class="card-img" src="{{ userprofile.user_image.url }}" alt="Profile Image" style="border-radius: 50%;">
-{% else %}
-	<img class="card-img" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/no_profile_image.png" alt="Avatar" style="border-radius: 50%;">
-{% endif %}
-	<a href="{% url 'profiles' %}">Your profile</a>
-	<a href="{% url 'my_challenges' %}">Your challenges</a>
-	<a href="{% url 'my_order_history' %}">Your order history</a>
-	<a href="{% url 'suggest_challenge' %}">Submit a idea for a challenge</a>
+    {% if Userprofile.user_image %}
+    <img class="card-img profile_image" src="{{ userprofile.user_image.url }}" alt="Profile Image" style="border-radius: 50%;" />
+    {% else %}
+    <img class="card-img profile_image" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/no_profile_image.png" alt="Avatar" style="border-radius: 50%;" />
+    {% endif %}
+    <a href="{% url 'profiles' %}">Your profile</a>
+    <a href="{% url 'my_challenges' %}">Your challenges</a>
+    <a href="{% url 'my_order_history' %}">Your order history</a>
+    <a href="{% url 'suggest_challenge' %}">Suggest an idea for a challenge</a>
 </div>
-<div class="main" style="background-color: #E6E7E8;">
-	<h1 class="display-4 heading-font">My Profile</h1>
-	<div>
-		<div class="main">
-			<div class="row">
-				<div class="col">
+<div class="main" style="background-color: #e6e7e8;">
+    <h1 class="display-4 heading-font">My Profile</h1>
+    <div>
+        <div class="main">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title header-title"><strong></strong></h3>
+                        <p class="card-text"></p>
+                        <ul class="list-group list-group-horizontal">
+                            <li class="list-item">{{ UserProfile.user }}</li>
+                            <li class="list-item">{{ UserProfile.user }}</li>
+                            <li class="list-item">{{ UserProfile.user }}</li>
+                            <li class="list-item">{{ UserProfile.user }}</li>
+                        </ul>
 
-				</div>
-				<div class="col-md-8">
-					<div class="card-body">
-						<h3 class="card-title header-title"><strong></strong></h3>
-						<p class="card-text"></p>
-						<ul class="list-group list-group-horizontal">
-							<li class="list-item">{{ UserProfile.user }}</li>
-							<li class="list-item">{{ UserProfile.user }}</li>
-							<li class="list-item">{{ UserProfile.user }}</li>
-							<li class="list-item">{{ UserProfile.user }}</li>
-						</ul>
-
-						<form class="mt-3" action="{% url 'edit_profile' %}" method="POST" id="profile-update-form">
-							{% csrf_token %}
-							{{ form|crispy }}
-							<button class="btn my-btn-light float-right">Update Information</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <form class="mt-3" action="{% url 'edit_profile' %}" method="POST" id="profile-update-form">
+                            {% csrf_token %} {{ form|crispy }}
+                            <button class="btn my-btn-light float-right">Update Information</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-{% endif %}
-
-{% endblock %}
-
-{% block postloadjs %}
-{{ block.super }}
+{% endif %} {% endblock %} {% block postloadjs %} {{ block.super }}
 <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}

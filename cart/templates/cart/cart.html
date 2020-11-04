@@ -1,124 +1,112 @@
-{% extends "base.html" %}
-{% load static %}
-{% load cart_tools %}
-
-{% block page_header %}
-    <div class="jumbotron jumbotron-fluid">
+{% extends "base.html" %} {% load static %} {% load cart_tools %} {% block page_header %}
+<div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4 heading-font">
             Your Shopping Cart
         </h1>
     </div>
 </div>
-{% endblock %}
+{% endblock %} {% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            {% if cart_items %}
+            <div class="table-responsive rounded">
+                <table class="table table-striped">
+                    <thead class="text-black">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
 
-{% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                {% if cart_items %}
-                    <div class="table-responsive rounded">
-                        <table class="table table-striped">
-                            <thead class="text-black">
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Subtotal</th>
-                                </tr>
-                            </thead>
-
-                            {% for item in cart_items %}
-                                <tr>
-                                    <td class="p-3 w-25">
-                                        {% if item.product.product_image %}
-                                        <img class="img-fluid" src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}">
-                                        {% else %}
-                                        <img class="img-fluid" src="{{ MEDIA_URL }}lost_image.png" alt="{{ item.product.name }}">
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        <p><strong>{{ item.product.name }}</strong></p>
-                                    </td>
-                                    <td>
-                                        <p>£{{ item.product.product_price }}</p>
-                                    </td>
-                                    <td>
-                                        <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
-                                            {% csrf_token %}
-                                            <div class="form-group">
-                                                <input class="form-control form-control-sm qty_input" type="number"
-                                                        name="quantity" value="{{ item.quantity }}" min="0" max="99"
-                                                        data-item_id="{{ item.item_id }}"
-                                                        id="id_qty_{{ item.item_id }}">
-                                            </div>
-                                        </form>
-                                        <a class="update-link"><small>Update</small></a>
-                                        <a class="delete-item float-right" id="delete_{{ item.item_id }}"><small><i class="fas fa-trash-alt"></i> Delete</small></a>
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-0">£ {{ item.product.product_price | calc_subtotal:item.quantity }}</p>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            <tr>
-                                <td colspan="5" class="pt-5 text-right">
-                                    <h6>Delivery fee:£ {{ delivery|floatformat:2 }}</h6>
-                                    <h6><strong>Total:£ {{ grand_total|floatformat:2 }}</strong></h6>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="5" class="text-right">
-                                    <span>
-                                        <a style="margin-right: 10%;" href="{% url 'shop' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Keep Shopping</a>
-                                        <a style="margin-right: 20%;" href="{% url 'challenges' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Back to Challenges</a>
-                                    </span>
-                                    <a href="{% url 'payment' %}" class="btn btn-lrg my-btn-light" type="button"><i class="far fa-credit-card"></i> Checkout</a>
-                                </td>
-                            </tr>
-                        </table>
-                        <br>
-                    </div>
-                 {% else %}
-                    <!-- Empty cart user-view -->
-                    <div class="container-fluid">
-                        <h2 class="cart_empty">Your cart is empty</h2>
-                        <span style="margin-left: 40%;">
-                            <a href="{% url 'shop' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Keep Shopping</a>
-                            <a href="{% url 'challenges' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Back to Challenges</a>
-                        </span>
-                    </div>
-                    <br>
-                {% endif %}
+                    {% for item in cart_items %}
+                    <tr>
+                        <td class="p-3 w-25">
+                            {% if item.product.product_image %}
+                            <img class="img-fluid" src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}" />
+                            {% else %}
+                            <img class="img-fluid" src="{{ MEDIA_URL }}lost_image.png" alt="{{ item.product.name }}" />
+                            {% endif %}
+                        </td>
+                        <td>
+                            <p><strong>{{ item.product.name }}</strong></p>
+                        </td>
+                        <td>
+                            <p>£{{ item.product.product_price }}</p>
+                        </td>
+                        <td>
+                            <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity" value="{{ item.quantity }}" min="0" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}" />
+                                </div>
+                            </form>
+                            <a class="update-link"><small>Update</small></a>
+                            <a class="delete-item float-right" id="delete_{{ item.item_id }}">
+                                <small><i class="fas fa-trash-alt"></i> Delete</small>
+                            </a>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">£ {{ item.product.product_price | calc_subtotal:item.quantity }}</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="5" class="pt-5 text-right">
+                            <h6>Delivery fee:£ {{ delivery|floatformat:2 }}</h6>
+                            <h6><strong>Total:£ {{ grand_total|floatformat:2 }}</strong></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <span>
+                                <a style="margin-right: 10%;" href="{% url 'shop' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Keep Shopping</a>
+                                <a style="margin-right: 20%;" href="{% url 'challenges' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Back to Challenges</a>
+                            </span>
+                            <a href="{% url 'payment' %}" class="btn btn-lrg my-btn-light" type="button"><i class="far fa-credit-card"></i> Checkout</a>
+                        </td>
+                    </tr>
+                </table>
+                <br />
             </div>
+            {% else %}
+            <!-- Empty cart user-view -->
+            <div class="container-fluid">
+                <h2 class="cart_empty">Your cart is empty</h2>
+                <span style="margin-left: 40%;">
+                    <a href="{% url 'shop' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Keep Shopping</a>
+                    <a href="{% url 'challenges' %}" class="btn cart_empty_btns" type="button"><i class="fas fa-undo-alt"></i> Back to Challenges</a>
+                </span>
+            </div>
+            <br />
+            {% endif %}
         </div>
     </div>
-{% endblock %}
-
-{% block postloadjs %}
-{{ block.super }}
+</div>
+{% endblock %} {% block postloadjs %} {{ block.super }}
 
 <script type="text/javascript">
     // Update quantity on click
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
+    $(".update-link").click(function (e) {
+        var form = $(this).prev(".update-form");
         form.submit();
-    })
+    });
 
     // delete item and reload on click
-    $('.delete-item').click(function(e) {
+    $(".delete-item").click(function (e) {
         var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('delete_')[1];
+        var itemId = $(this).attr("id").split("delete_")[1];
         var url = `/cart/delete/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
+        var data = { csrfmiddlewaretoken: csrfToken };
 
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
+        $.post(url, data).done(function () {
+            location.reload();
+        });
+    });
 </script>
-
 
 {% endblock %}
