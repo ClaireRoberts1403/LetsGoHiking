@@ -22,7 +22,7 @@ body {
 }
 
 /* Flexbox taken from https://heydonworks.com/article/the-flexbox-holy-albatross/ */
-.container {
+.containerFlex {
   display: flex;
   flex-wrap: wrap;
   --margin: 1rem;
@@ -30,7 +30,7 @@ body {
   margin: calc(var(--margin) * -1);
 }
 
-.container > * {
+.containerFlex > * {
   background-color: #E9ECEF;
   min-width: calc(33% - (var(--margin) * 2));
   max-width: 100%;
