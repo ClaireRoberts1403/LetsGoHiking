@@ -475,6 +475,10 @@ form.form-group.login {
     margin: 10px;
 }
 
+.heading-font {
+    font-size: 2em;
+}
+
 }
 
 @media (max-width: 350px) {
