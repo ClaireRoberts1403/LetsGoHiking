@@ -13,10 +13,11 @@ def profiles(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'GET':
         form = UserProfileForm(request.GET, request.FILES)
+        UserProfiles = UserProfile.objects.all()
     else:
         form = UserProfileForm()
 
-    return render(request, 'profiles/profiles.html')
+    return render(request, 'profiles/profiles.html', {'UserProfiles': UserProfiles})
 
 
 @login_required

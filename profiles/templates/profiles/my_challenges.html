@@ -38,7 +38,7 @@
                                     {% if challenge.challenge_image %}
                                     <img class="card-img" src="{{ challenge.challenge_image.url }}" alt="{{ challenge.name }}" />
                                     {% else %}
-                                    <img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}" />
+                                    <img class="card-img" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/lost_image.png" alt="{{ challenge.name }}" />
                                     {% endif %}
                                 </td>
                                 <td>
@@ -79,7 +79,7 @@
                                     {% if challenge.challenge_image %}
                                     <img class="card-img award_image" src="{{ challenge.challenge_award_image.url }}" alt="{{ challenge.name }}" />
                                     {% else %}
-                                    <img class="card-img" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}" />
+                                    <img class="card-img" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/lost_image.png" alt="{{ challenge.name }}" />
                                     {% endif %}
                                 </td>
                             </tr>
@@ -177,7 +177,7 @@
                 {% if challenge.map_image %}
                 <img class="card-img w-50" src="{{ challenge.map_image.url }}" alt="{{ challenge.name }}" />
                 {% else %}
-                <img class="card-img w-50" src="{{ MEDIA_URL }}lost_image.png" alt="{{ challenge.name }}" />
+                <img class="card-img w-50" src="https://clairerobertsletsgohiking.s3.eu-west-2.amazonaws.com/media/lost_image.png" alt="{{ challenge.name }}" />
                 {% endif %}
             </div>
         </div>
