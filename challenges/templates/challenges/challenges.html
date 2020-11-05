@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col">
             {% for challenge in challenges %}
@@ -20,6 +20,7 @@
                     <thead>
                         <tr>
                             <td class="p-4 w-25">
+                            <p class="text-nowrap py-4" style="color: white;">------------------------------------</p>
                                 {% if challenge.challenge_image %}
                                 <img class="card-img" src="{{ challenge.challenge_image.url }}" alt="{{ challenge.name }}" />
                                 {% else %}
@@ -28,6 +29,7 @@
                             </td>
                             <td>
                                 <p class="challenge-header">{{ challenge.name }}</p>
+                                <p class="text-nowrap py-4" style="color: white;">------------------------------------------------</p>
                                 <p class="challenge-subheader">{{ challenge.challenge_description }}</p>
                                 <br />
                                 <p><i class="far fa-grin-beam-sweat mr-2"></i> Difficulty: {{ challenge.challenge_difficulty_rating }}</p>
