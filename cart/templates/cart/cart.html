@@ -36,7 +36,7 @@
                             <p><strong>{{ item.product.name }}</strong></p>
                         </td>
                         <td>
-                            <p>£{{ item.product.product_price }}</p>
+                            <p>£{{ item.product.price }}</p>
                         </td>
                         <td>
                             <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
@@ -51,7 +51,7 @@
                             </a>
                         </td>
                         <td class="py-3">
-                            <p class="my-0">£ {{ item.product.product_price | calc_subtotal:item.quantity }}</p>
+                            <p class="my-0">£ {{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </td>
                     </tr>
                     {% endfor %}

@@ -77,13 +77,13 @@ Profile app - BUG
 
 
 ## Future ideas for expansion
-*The community blog. This would allow the let's go hiking users to discuss the latest challenge they had completed and share photos.
-*More variation of challenges - Such as challenges aimed at children, or beginners with more guidedence on the gear to use and how to be safe on the mountains.
-*Newsletter - Emailed to all users to inspire and inform users of new challenges, pruductd or features.
-*Interactive maps - The users would have a clear positions of start points and car parks.
-*Navigation - A system of navigation using a maps api to give the user access to responsive maps during the challenge to guide the user on their route.
-*Multi-locations - The challenges can cover world wide hiking locations allowing a global user group and inpsire travelers to explore areas unknown to them.
-*Product growth in shop - To expand the shop product line.
+* The community blog. This would allow the let's go hiking users to discuss the latest challenge they had completed and share photos.
+* More variation of challenges - Such as challenges aimed at children, or beginners with more guidedence on the gear to use and how to be safe on the mountains.
+* Newsletter - Emailed to all users to inspire and inform users of new challenges, pruductd or features.
+* Interactive maps - The users would have a clear positions of start points and car parks.
+* Navigation - A system of navigation using a maps api to give the user access to responsive maps during the challenge to guide the user on their route.
+* Multi-locations - The challenges can cover world wide hiking locations allowing a global user group and inpsire travelers to explore areas unknown to them.
+* Product growth in shop - To expand the shop product line.
 
 
 ## Technologies Used
@@ -106,7 +106,7 @@ Profile app - BUG
 
 ## Guidence/Resourses from
 
-- “Created my free logo at LogoMakr.com”
+- “Created my free logo at https://www.LogoMakr.com”
 - "Additional guidence from Django Docs https://www.djangoproject.com/"
 - "Fixes for small queries https://stackoverflow.com/"
 - "for guidence on cripsy forms set up https://django-crispy-forms.readthedocs.io/en/latest/index.html"
