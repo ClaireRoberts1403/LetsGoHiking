@@ -334,7 +334,7 @@ ul li a.cart .cart-basket {
 
 /* Table */
 .table {
-    margin-left: 5%;
+    margin-left: 15%;
     width: 70%;
     padding: 10%;
 }
@@ -357,7 +357,7 @@ form.form-group.login {
     font-family: 'Alfa Slab One', cursive;
     font-size: 3em;
     color: black;
-    margin-left: 10%;
+    margin-left: 20px;
 }
 
 .smaller-subheading-font {
@@ -446,6 +446,14 @@ form.form-group.login {
     margin: 0;
     width: 100%;
     padding: 0;
+}
+
+.smaller-heading-font {
+    margin-left: 0;
+}
+
+.smaller-subheading-font {
+    margin-left: 0;
 }
 
 .smaller-shop-font {

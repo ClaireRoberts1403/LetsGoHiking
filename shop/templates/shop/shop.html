@@ -16,11 +16,11 @@
 
 <!-- Product Card reformatted inspired by boutique ado project credit - code institue-->
 
-<div class="container-fluid">
-    <div class="row">
+<div class="container mt-3 mb-3">
+    <div class="row mb-3">
         {% for product in products %}
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 x-2">
-            <div class="card h-100 border-0 x-2 my-card">
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 x-2 mb-5">
+            <div class="card h-100 border-0 x-2 my-card mb-3">
                 <img src="{{ product.product_image.url }}" alt="" class="img-fluid d-block mx-auto mb-3" />
                 <div class="card-body text-center pb-0">
                     <p class="mb-0 text-center shop-header"><strong>{{ product.name }}</strong></p>
@@ -29,9 +29,9 @@
                     <br />
                     <p class="text-center shop-price">£{{product.price}}</p>
                 </div>
-                <div class="card-footer bg-white pt-0 border-0 text-center">
-                    <div class="row text-center">
-                        <div class="col-12 text-center">
+                <div class="card-footer bg-white pt-0 border-0">
+                    <div class="row">
+                        <div class="col-12">
                             <!-- Add to cart functionality -->
                             <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                                 {% csrf_token %}
@@ -67,5 +67,7 @@
         </div>
         {% endfor %}
     </div>
+    <br>
 </div>
+<br>
 {% endblock %}

@@ -59,7 +59,7 @@
                         <tr>
                             <td colspan="5" class="pt-5">
                                 <h3 class="smaller-subheading-font">Please fill out the form below to complete your order</h3>
-                                <!-- Form guided by Code Insitute Tutorial -->
+                                <!-- Form guided by Code Insitute Tutorial see readME -->
                                 <form action="{% url 'payment' %}" method="POST" id="payment-form">
                                     {% csrf_token %}
                                     <fieldset class="rounded px-3 mt-5 mb-5">
@@ -68,8 +68,12 @@
                                     </fieldset>
                                     <fieldset class="rounded px-3 mb-5">
                                         <legend class="fieldset-label smaller-subheading-font ml-1 mb-5 px-2 w-auto">Delivery</legend>
-                                        {{ order_form.street_address1 | as_crispy_field }} {{ order_form.street_address2 | as_crispy_field }} {{ order_form.town_or_city | as_crispy_field }} {{ order_form.county | as_crispy_field }} {{
-                                        order_form.postcode | as_crispy_field }} {{ order_form.country | as_crispy_field }}
+                                        {{ order_form.street_address1 | as_crispy_field }}
+                                         {{ order_form.street_address2 | as_crispy_field }}
+                                          {{ order_form.town_or_city | as_crispy_field }} 
+                                          {{ order_form.county | as_crispy_field }} 
+                                          {{ order_form.postcode | as_crispy_field }} 
+                                          {{ order_form.country | as_crispy_field }}
                                         <div class="form-check form-check-inline float-right mr-0">
                                             {% if user.is_authenticated %}
                                             <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
@@ -94,7 +98,7 @@
                                     <tr>
                                         <td>
                                             <a href="{% url 'cart' %}" class="cart" aria-label="View your shopping cart">
-                                                <h2 class="smaller-subheading-font ml-1 mt-3">
+                                                <h2 class="smaller-subheading-font mt-3">
                                                     <i class="fas fa-chevron-left" style="color: #ff9600;"></i> Or go back to cart <i class="fas fa fa-shopping-cart" style="color: #ff9600;"></i>
                                                 </h2>
                                             </a>
