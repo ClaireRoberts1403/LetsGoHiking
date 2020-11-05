@@ -439,6 +439,15 @@ form.form-group.login {
 
 }
 
+@media (max-width: 768px) {
+
+.about_btns {
+    display: block;
+    margin: 10px;   
+}
+
+}
+
 @media (max-width: 425px) {
 
 .header-title {
@@ -459,6 +468,11 @@ form.form-group.login {
     margin-top: 40%;
     font-size: 2em;
     color: #E6E7E8;
+}
+
+.about_btns {
+    display: block;
+    margin: 10px;
 }
 
 }
