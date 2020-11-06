@@ -151,6 +151,7 @@ Without any orders, the my order history page is not complete. And the your chal
                    - The contact form successfully works when filled out sending the message to Django admin for the site owners. The user is then redirected to the home page with a success message popping up for the user to know the message was succesfully sent.
                    - The form responds to empty fields, encouraging the user to which fields need are empty. The email field also checks for a vaild email address. 
                    - The form cancel button successfully takes the user back to the home page.
+* Responsive? - The home app including the about page and contact us form has good functionality on large, tablet and small screens. The design still needs some work, with the hero image and empty space on tablet and small screen sizes.
 
 ### The Challenge App
 
@@ -158,6 +159,7 @@ Without any orders, the my order history page is not complete. And the your chal
                       - The form function to add a quantity works and also doesn't allow the user to add 0 quantity to the cart. The add to cart succesfully adds the quantity to the cart.
                       - After adding to cart the user recieves a success message, informing the user that the specific item has been added to cart. If the user adds another of the same product the cart will updated and the success message informs the user of the new quantity in the cart.
 * The full challenge page - The user can not access the full challenge page by typing it into the server without signing in to the site.
+* Responsive? - The challenge page needs screen scrolling on mobile to see the entire card. A future element would be a different way to display the challenge information on mobile. Again on tablet size the challenge card requires a little scrolling. The challenges page fits well on a laptop size.
 
 ### The Shop App
 
@@ -166,6 +168,7 @@ Without any orders, the my order history page is not complete. And the your chal
                 - A small bug found at final deployment was that the redirect in the shop returns the full shop and not the category page the user was on before adding to cart.
                 - The form function to add a quantity works and also doesn't allow the user to add 0 quantity to the cart. The add to cart succesfully adds the quantity to the cart.
                 - The shop second navbar works well to allow users to navigate the different categories and all links are funcational.
+* Responsive? - The shop page works well on all three screen sizes with only small alignment issues.
 
 ### The Cart App
 
@@ -178,6 +181,7 @@ Without any orders, the my order history page is not complete. And the your chal
                 - The cart displayed the subtotal for the user and to the bottom of the page the delivery cost and the total. 
                 - At the bottom there are buttons to allow the user to easily navigate to keep shopping or back to challenges. These buttons are functional.
                 - The checkout button succesfully takes the user to the payment page.
+* Responsive? - The cart app looks strong on laptop and tablet. With the mobile size with a more alignment issues.
 
 ### The Payment App 
 
@@ -188,7 +192,7 @@ Without any orders, the my order history page is not complete. And the your chal
                    - The stripe card function reacts in a way that is working and succesfully sends a payment intent to stripe for the total in the cart. The Stripe element also displays error messages when the card details are incorrect filled in.
                    - When siging up to the site via Heroku bug was found with the backend email set up "django.core.mail.backends.smpt", yet when checking django admin the user was signed up.
                    - When signed in the form displays the users delivery address.
-
+* Responsive? - The payment app is good down to a large mobile size once smaller the form has a scroll. Also the back to card link scrunches up.
 ### The Profile App 
 
 * My profile page - A lot of issues with the profile app. The profile page displays all profiles and not that of the user.
@@ -197,7 +201,7 @@ Without any orders, the my order history page is not complete. And the your chal
                   - The my challenges page succesfully shows the full challenge to the user, but without the order functionality the user currently can see the full route to all the challenges.
                   - The suggest a challenge page succesfully works to pass the information in the form into django admin for the site owner to gain access to the ideas and information before deciding if it worth adding to the site.
 * Additional features - The two admin pages of add product and add challenge work to successfully add new products to the site directly from the site itself if the user is a superuser.
-
+* Responsive? - The form features work well on all screen sizes but there are a lot of responsive issue with the profile app.
 
 ## Deployment
 
@@ -266,3 +270,5 @@ else: DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': o
 - I received inspiration and guidence for this project from  Code Institute Boutique tutorial.
 - The idea for patches was inspired by https://www.conquerlakedistrict.co.uk/
 - The orginal idea came from wanting to know the best hikes when traveling and knowing where to park and which route to take. I also like mementos and keepsakes and think a challenge drives you to puch yourself to go further, higher or just to go when its raining. This is idea I will pursue further, once I have more experience to build a site that truely reflects what I am after myself as a user of this site.
+
+This as my final project had great moments of joy when everything worked, the code just clicked and writing this project flowed. And times where I couldn't get a button to centre align (and still can't). This project has a lot of potential and I will go seek some new ideas and methods and either build on top of this project or build from scratch. I have enjoy the course and I am excited for a little break as balancing work and coding has been a struggle with the additional pressures of covid. But I look forward to the new learning opportunities and whatever my future holds.
