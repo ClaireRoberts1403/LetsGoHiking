@@ -3,12 +3,12 @@
 ## Mission Message
 
 The aim of 'Let’s Go Hiking' is to bring together individuals with a sense of adventure as they complete hiking challenges and gain rewards. 
+
 ![Home page](/media/readme/home_page.png)
+
 Let's go hiking will provided inspiration to get into the great outdoors and 
 create a online social community who like to hike and who love a challenge. 
-![About page - mobile](/media/readme/about_mobile.png)
 * This site will provide hiking challenges that the user can purchase.
-![Challenges page](/media/readme/challenge_page.png)
 * With the
 purchase the user will become a member of the site and gain access to the full hiking 
 information pack and will received a challenge reward, such as a patch or sticker. 
@@ -16,9 +16,9 @@ information pack and will received a challenge reward, such as a patch or sticke
 * The member will then be able to share their adventure with other members through the 
 community blog (future feature).
  * This allows a hike to become more of an event and to create long lasting memories.
-![Shop page](/media/readme/shop_page.png)
 * The user will be also able to purchase more apparel through the 'Let's go hiking' shop. 
-
+![Shop page](/media/readme/shop_page.png)
+![Challenges page](/media/readme/challenge_page.png)
 ## UX
 
 
@@ -38,7 +38,7 @@ The site owner will want easy access to add new products and add new challenges.
 ![Landing page wireframe](/media/readme/landing_page_wireframe.png)
 ![Challenges page wireframe](/media/readme/challenges_wireframe.png)
 ![Shop wireframe](/media/readme/shop-wireframe.png)
-#### Orginal idea - planning stage.
+#### Orginal idea - planning stage. All PDFs are in the media/readme file
 * [Idea overview](https://eb258abd-fe1f-4a1b-99b7-36b61e9f6869.ws-eu01.gitpod.io/files/download/?id=b6ed0fda-0a2f-40cf-9f35-c2f7bb6b2716)
 * [Slimmed down Idea Brainstorm](https://eb258abd-fe1f-4a1b-99b7-36b61e9f6869.ws-eu01.gitpod.io/files/download/?id=3d6fe427-68bd-484f-ae0d-abfc5ec0fc2f)
 * [Idea Brainstorm](https://eb258abd-fe1f-4a1b-99b7-36b61e9f6869.ws-eu01.gitpod.io/files/download/?id=88b86278-b4d0-4e99-9ac8-32ac644b12e6)
@@ -80,14 +80,15 @@ The site owner also as a superuser once logged in has access to add a challenge 
 
 ## Features left to implement 
 
-Media queries - I have implemented a substanial amount of media queries yet I know there are elements such as the challenge table that is not reponsive due to time constraints.
+Media queries - I have implemented a substantial amount of media queries yet I know there are elements such as the challenge table that is not reponsive due to time constraints.
 
 Payment app - The payments app has caused a lot of issues. I orginially wanted to use stripe checkout. After following one set of guidence that was not successful, I re-built is with success. Connecting to stripe using checkout. ![Stripe confirmed payment](/media/readme/stripe1.png).
 After committing the changes and shutting my laptop down, it never worked again. Being short on time I followed the Code Institutes Boutique tutorial to install Stripe with the payment element. Again, I had a lot of difficulty in getting stripe to work correctly, for a while it blocked the cart even connecting to the payment.html page. 
 After debugging to get the payments.html page to render I discovered that the payment intents where arriving on the stripe dashboard but it was throwing this error "$.post is not a function at HTMLFormElement.<anonymous>" ![Stripe payment intents](/media/readme/stripe2.png).![Stripe dev dashboard](/media/readme/stripe3.png).
 I re-followed the tutorial and continued to the webhooks to hopefully discover an error or the issue that is causing stripe to gain intent but not produce an order. Because of this the additional functionality for users to see their orders and the specific challenge paid for has not been built.
 
-Profile app - The Profile app renders all profiles when authorised which is not the explectation for the profile app. The views of my orders and my challenges have limited functionality due to this. The Edit profile 
+Profile app - The Profile app renders all profiles when authorised which is not the expectation for the profile app. The views of my orders and my challenges have limited functionality due to this. The Edit profile returns all profiles to select from and isnt saving the updated information.
+Without any orders, the my order history page is not complete. And the your challenges page lacks the additional functionality of displaying the paid for challenge to the user.
 
 
 ## Future ideas for expansion
@@ -98,6 +99,8 @@ Profile app - The Profile app renders all profiles when authorised which is not 
 * Navigation - A system of navigation using a maps api to give the user access to responsive maps during the challenge to guide the user on their route.
 * Multi-locations - The challenges can cover world wide hiking locations allowing a global user group and inpsire travelers to explore areas unknown to them.
 * Product growth in shop - To expand the shop product line.
+* A challenge progress/status bar for users to set themselves goals in miles hikes, or challenges completed.
+* A way to download a Pdf copy of the route for users to print if the required.
 
 
 ## Technologies Used
@@ -133,28 +136,67 @@ Profile app - The Profile app renders all profiles when authorised which is not 
 
 ## Testing
 
+### Home App
 
+ * The navbar - All links are working and the user has ease of movement around the site and doesn't need to use the back button in the server.
+              - The Logo and header 'Let's go hiking' also return the user to the home page, as this is a common feature.
+              - The toggler function works well and also adds the login and sign up buttons inside on small screens.
+              - The shop drop down menu works with all links landing at the correct destination. #
+              - The shopping cart links to the shopping cart.
 
-Coverage - Nose
+* The find out more button, succesfully redirects to the about page.
+* The footer - all links take the user to the correct page. The two social media external links open a new page for the user.
+* The about page  -  The link to access works and the users have both the navbar as naviagtion and the additional buttons that all work to send the user to the page the want to access.
+* The contact page - It was found there was a bug with the error toast message displaying each time the page was rendered this was removed. 
+                   - The contact form successfully works when filled out sending the message to Django admin for the site owners. The user is then redirected to the home page with a success message popping up for the user to know the message was succesfully sent.
+                   - The form responds to empty fields, encouraging the user to which fields need are empty. The email field also checks for a vaild email address. 
+                   - The form cancel button successfully takes the user back to the home page.
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+### The Challenge App
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
+* The Challenges page - The page succesfully shows both the header and the footer. The information from the database is successfully rendered showing the challenge cards to the user.
+                      - The form function to add a quantity works and also doesn't allow the user to add 0 quantity to the cart. The add to cart succesfully adds the quantity to the cart.
+                      - After adding to cart the user recieves a success message, informing the user that the specific item has been added to cart. If the user adds another of the same product the cart will updated and the success message informs the user of the new quantity in the cart.
+* The full challenge page - The user can not access the full challenge page by typing it into the server without signing in to the site.
 
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+### The Shop App
 
-1. Contact form:
-    1. Go to the "Contact Us" page
-    2. Try to submit the empty form and verify that an error message about the required fields appears
-    3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-    4. Try to submit the form with all inputs valid and verify that a success message appears.
+* The Shop page - The shop page succesfully displays products by category. 
+                - The user can add products to the cart, after adding to cart the user recieves a success message, informing the user that the specific item has been added to cart. If the user adds another of the same product the cart will updated and the success message informs the user of the new quantity in the cart.
+                - A small bug found at final deployment was that the redirect in the shop returns the full shop and not the category page the user was on before adding to cart.
+                - The form function to add a quantity works and also doesn't allow the user to add 0 quantity to the cart. The add to cart succesfully adds the quantity to the cart.
+                - The shop second navbar works well to allow users to navigate the different categories and all links are funcational.
 
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+### The Cart App
 
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+* The Cart page - The page correctly displays the empty cart render when the cart is empty and the user has to workable links to 'keep shopping' or go 'back to challenges'.
+                - The Cart succesfully displays the item count in the cart in the icon in the navbar, updating with each additional item and reducing when items are taken out of the cart.
+                - The products in the cart are displayed for the user with the image, name and price and the quantity selected displayed in the quantity form.
+                - The user can update the cart and add more to the quantity this updates both the cart page and the cart icon in the navbar. The user also recieves a success message.
+                - The user can also succesfully delete the item using the quanity form by changing to 0. The user with recieve a success message that the item has been deleted.
+                - The delete button doesnt not work resulting in the folowing bug in javascript ($.post is not a function) This is the same bug stopping the stripe payment. I havent found a solution so for now I have removed the delete button from the user.
+                - The cart displayed the subtotal for the user and to the bottom of the page the delivery cost and the total. 
+                - At the bottom there are buttons to allow the user to easily navigate to keep shopping or back to challenges. These buttons are functional.
+                - The checkout button succesfully takes the user to the payment page.
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+### The Payment App 
 
+* The payment page - The user still has full access to the navbar and footer.
+                   - The payment page displays a summary of the order. With uneditable prices and quantites.
+                   - The user has two options on the page to go back to cart, which are functional.
+                   - The payment form functions correctly, highlighing any errors or required areas for the users complete.
+                   - The stripe card function reacts in a way that is working and succesfully sends a payment intent to stripe for the total in the cart. The Stripe element also displays error messages when the card details are incorrect filled in.
+                   - When siging up to the site via Heroku bug was found with the backend email set up "django.core.mail.backends.smpt", yet when checking django admin the user was signed up.
+                   - When signed in the form displays the users delivery address.
+
+### The Profile App 
+
+* My profile page - A lot of issues with the profile app. The profile page displays all profiles and not that of the user.
+                  - The Edit profile page returns all users to select from and doesn't save the information for the user.
+                  - The order history isn't build as no order numbers where generated to display the users order history.
+                  - The my challenges page succesfully shows the full challenge to the user, but without the order functionality the user currently can see the full route to all the challenges.
+                  - The suggest a challenge page succesfully works to pass the information in the form into django admin for the site owner to gain access to the ideas and information before deciding if it worth adding to the site.
+* Additional features - The two admin pages of add product and add challenge work to successfully add new products to the site directly from the site itself if the user is a superuser.
 
 
 ## Deployment
@@ -221,6 +263,6 @@ else: DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': o
 
 ### Acknowledgements
 
-- I received inspiration for this project from  Code Institute Boutique tutorial.
+- I received inspiration and guidence for this project from  Code Institute Boutique tutorial.
 - The idea for patches was inspired by https://www.conquerlakedistrict.co.uk/
 - The orginal idea came from wanting to know the best hikes when traveling and knowing where to park and which route to take. I also like mementos and keepsakes and think a challenge drives you to puch yourself to go further, higher or just to go when its raining. This is idea I will pursue further, once I have more experience to build a site that truely reflects what I am after myself as a user of this site.
