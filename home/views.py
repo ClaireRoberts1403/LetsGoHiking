@@ -23,7 +23,6 @@ def contact(request):
             return redirect(reverse('home'))
     else:
         form = ContactForm()
-        messages.error(request, f'Failed to send message')
 
     form = ContactForm()
     template = 'home/contact.html'
