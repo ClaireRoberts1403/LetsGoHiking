@@ -3,15 +3,20 @@
 ## Mission Message
 
 The aim of 'Let’s Go Hiking' is to bring together individuals with a sense of adventure as they complete hiking challenges and gain rewards. 
-
+![Home page](/media/readme/home_page.png)
 Let's go hiking will provided inspiration to get into the great outdoors and 
 create a online social community who like to hike and who love a challenge. 
-* This site will provide hiking challenges that the user can purchase. * With the
+![About page - mobile](/media/readme/about_mobile.png)
+* This site will provide hiking challenges that the user can purchase.
+![Challenges page](/media/readme/challenge_page.png)
+* With the
 purchase the user will become a member of the site and gain access to the full hiking 
 information pack and will received a challenge reward, such as a patch or sticker. 
 * These patches will be individually designed and exclusive to purchasing the challenge. 
 * The member will then be able to share their adventure with other members through the 
-community blog (future feature). * This allows a hike to become more of an event and to create long lasting memories.
+community blog (future feature).
+ * This allows a hike to become more of an event and to create long lasting memories.
+![Shop page](/media/readme/shop_page.png)
 * The user will be also able to purchase more apparel through the 'Let's go hiking' shop. 
 
 ## UX
@@ -25,14 +30,15 @@ This user is a adventurer at heart and already hikes a lot. This user is looking
 This user is new to hiking and not sure of where to go and routes to take. This site will give them a full guide and the user can build themselves up from easy challenges up to the hard challenges collect awards along the way.
 #### User Story 3 - The Social Bragger
 This user will enjoy completing challenges for the awards and the bragging rights, they will be vocal users of the community blog and will need fresh content and products in the shop, as well as on the social media accounts to keep them engaged.
-#### User Story 4 - Site admin
-The site admin will want easy access to add neew products and add new challenges. The will want a way for users to suggest challenges and to give direct feedback to the site admin.
+#### User Story 4 - Site owner
+The site owner will want easy access to add new products and add new challenges. The will want a way for users to suggest challenges and to give direct feedback to the site admin.
 
 
 ### Wireframes
 ![Landing page wireframe](/media/readme/landing_page_wireframe.png)
 ![Challenges page wireframe](/media/readme/challenges_wireframe.png)
 ![Shop wireframe](/media/readme/shop-wireframe.png)
+#### Orginal idea - planning stage.
 * [Idea overview](https://eb258abd-fe1f-4a1b-99b7-36b61e9f6869.ws-eu01.gitpod.io/files/download/?id=b6ed0fda-0a2f-40cf-9f35-c2f7bb6b2716)
 * [Slimmed down Idea Brainstorm](https://eb258abd-fe1f-4a1b-99b7-36b61e9f6869.ws-eu01.gitpod.io/files/download/?id=3d6fe427-68bd-484f-ae0d-abfc5ec0fc2f)
 * [Idea Brainstorm](https://eb258abd-fe1f-4a1b-99b7-36b61e9f6869.ws-eu01.gitpod.io/files/download/?id=88b86278-b4d0-4e99-9ac8-32ac644b12e6)
@@ -67,13 +73,21 @@ At the bottom of the cart there is the options to continue shopping or to procee
 The payment app has a overview of the users order, and a form to collect the user information and the stripe card element for payment. There is also an option to build a profile if a new user.
 (BUG - The payment intents are present on the stripe dashboard showing the correct amount, but no user data is collected and no order number is created)
 ### Profiles app
+The profiles app has a side navbar to allow users to access their profile information and edit it (See Features left to implement). It also has a my challenges page to show the user the full route information for the challenge they have purchased and a my orders page to show the user past purchases. 
+The user also has a page to submit a challenge idea which the site owner can access through django admin, the site owner can then decide if the challenge idea should be uploaded to the site.
+The site owner also as a superuser once logged in has access to add a challenge and add a product pages via the my account dropdown in the navbar, allowing for easy access to add more features. 
 
 
+## Features left to implement 
 
-## Features left to implement
+Media queries - I have implemented a substanial amount of media queries yet I know there are elements such as the challenge table that is not reponsive due to time constraints.
 
-Payment app - BUG
-Profile app - BUG
+Payment app - The payments app has caused a lot of issues. I orginially wanted to use stripe checkout. After following one set of guidence that was not successful, I re-built is with success. Connecting to stripe using checkout. ![Stripe confirmed payment](/media/readme/stripe1.png).
+After committing the changes and shutting my laptop down, it never worked again. Being short on time I followed the Code Institutes Boutique tutorial to install Stripe with the payment element. Again, I had a lot of difficulty in getting stripe to work correctly, for a while it blocked the cart even connecting to the payment.html page. 
+After debugging to get the payments.html page to render I discovered that the payment intents where arriving on the stripe dashboard but it was throwing this error "$.post is not a function at HTMLFormElement.<anonymous>" ![Stripe payment intents](/media/readme/stripe2.png).![Stripe dev dashboard](/media/readme/stripe3.png).
+I re-followed the tutorial and continued to the webhooks to hopefully discover an error or the issue that is causing stripe to gain intent but not produce an order. Because of this the additional functionality for users to see their orders and the specific challenge paid for has not been built.
+
+Profile app - The Profile app renders all profiles when authorised which is not the explectation for the profile app. The views of my orders and my challenges have limited functionality due to this. The Edit profile 
 
 
 ## Future ideas for expansion
@@ -118,6 +132,7 @@ Profile app - BUG
 - "Payment process guided by Code Institute E commance tutorials"
 
 ## Testing
+
 
 
 Coverage - Nose
@@ -183,12 +198,29 @@ else: DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': o
 
 ## Credits
 
+## Guidence/Resourses from
+
+- “Created my free logo at https://www.LogoMakr.com”
+- "Additional guidence from Django Docs https://www.djangoproject.com/"
+- "Fixes for small queries https://stackoverflow.com/"
+- "for guidence on cripsy forms set up https://django-crispy-forms.readthedocs.io/en/latest/index.html"
+- "Transitions of images on home page from https://cssreset.com/how-to-create-the-perfect-image-crossfade-with-css3-transitions/"
+- "Shopping cart with item counter from https://www.solodev.com/blog/web-design/how-to-show-the-total-number-of-items-in-customer-shopping-carts.stml"
+- "Bootstrap toasts https://getbootstrap.com/docs/4.3/components/toasts/"
+- "Payment app from Stripe https://testdriven.io/blog/django-stripe-tutorial/"
+- "Payment app from https://www.youtube.com/watch?v=JwhEjEqG43M"
+- "Payment process guided by Code Institute Boutique tutorials"
+
 ### Content
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
+- The text for the challenges was copied from 'Great mountain days in the Lake District by Mark Richards'
+- Quotes taken from google.
 
 ### Media
 - The photos used in this site were obtained from google images
+- The two map images for the challenges are taken from 'Great mountain days in the Lake District by Mark Richards'
 
 ### Acknowledgements
 
-- I received inspiration for this project from X
+- I received inspiration for this project from  Code Institute Boutique tutorial.
+- The idea for patches was inspired by https://www.conquerlakedistrict.co.uk/
+- The orginal idea came from wanting to know the best hikes when traveling and knowing where to park and which route to take. I also like mementos and keepsakes and think a challenge drives you to puch yourself to go further, higher or just to go when its raining. This is idea I will pursue further, once I have more experience to build a site that truely reflects what I am after myself as a user of this site.
