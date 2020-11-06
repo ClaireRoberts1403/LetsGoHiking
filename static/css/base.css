@@ -235,6 +235,13 @@ ul li a.cart .cart-basket {
     font-weight: bold;
 }
 
+.my-btn-dark-logout {
+    background-color: #007878;
+    color: #E6E7E8!important;
+    font-weight: bold;
+    margin-left: 10%;
+}
+
 .my-btn-dark:hover {
     background-color: #024d4d;
     color: #E6E7E8!important;
